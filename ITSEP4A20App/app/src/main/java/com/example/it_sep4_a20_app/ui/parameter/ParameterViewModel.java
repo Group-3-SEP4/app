@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app;
+package com.example.it_sep4_a20_app.ui.parameter;
 
 import androidx.lifecycle.ViewModel;
 

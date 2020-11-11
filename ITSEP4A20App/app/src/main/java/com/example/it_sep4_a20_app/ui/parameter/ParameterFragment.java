@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app;
+package com.example.it_sep4_a20_app.ui.parameter;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.it_sep4_a20_app.R;
 
 public class ParameterFragment extends Fragment {
 

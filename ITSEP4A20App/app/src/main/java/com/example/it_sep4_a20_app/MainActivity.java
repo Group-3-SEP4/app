@@ -14,13 +14,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
-
+import com.example.it_sep4_a20_app.ui.co2.Co2Fragment;
+import com.example.it_sep4_a20_app.ui.home.HomeFragment;
+import com.example.it_sep4_a20_app.ui.parameter.ParameterFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
 {
-    //hey
-
     private TextView co2View;
     private MainActivityViewModel viewModel;
     private DrawerLayout drawerLayout;
