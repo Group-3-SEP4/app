@@ -6,32 +6,25 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
 
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CO2APIClient implements ICO2APIClient
+public class APIClient implements IAPIClient
 {
-    OkHttpClient okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-
-    private INetworking networking;
+    private SleepTrackerAPI api;
     private MutableLiveData<Double> co2;
 
-    public CO2APIClient()
+    public APIClient(SleepTrackerAPI api)
     {
-        networking = ServiceGenerator.getAPI();
+        this.api = api;
         co2 = new MutableLiveData<>();
     }
 
     @Override
     public MutableLiveData<Double> requestCO2()
     {
-        Call<Double> call = networking.getCO2();
+        Call<Double> call = api.getCO2();
         call.enqueue(new Callback<Double>()
         {
             @Override
