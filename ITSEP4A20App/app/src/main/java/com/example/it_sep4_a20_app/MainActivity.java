@@ -30,10 +30,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_co2, R.id.nav_parameter)
+        mAppBarConfiguration = new AppBarConfiguration.Builder
+                ( R.id.nav_home
+                , R.id.nav_co2
+                , R.id.nav_parameter)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.layout_drawer_activity, menu);
+        getMenuInflater().inflate(R.menu.appbar_menu, menu);
         return true;
     }
 

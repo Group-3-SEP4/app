@@ -16,7 +16,7 @@ public class ServiceGenerator
         if(api == null)
         {
             Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
-                    .baseUrl("") //TODO Change to API address
+                    .baseUrl("https://rokasapi.azurewebsites.net/")
                     .addConverterFactory(GsonConverterFactory.create());
             Retrofit retrofit = retrofitBuilder.build();
             api = retrofit.create(SleepTrackerAPI.class);

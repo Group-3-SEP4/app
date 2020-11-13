@@ -14,7 +14,7 @@ public class Repository
 
     public Repository()
     {
-        apiClient = APIFactory.getAPIClientDummy();
+        apiClient = APIFactory.getAPIClient();
     }
 
     public MutableLiveData<Double> getCO2()

@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 
 public interface SleepTrackerAPI
 {
-    @GET("") //TODO Change endpoint
+    @GET("/CO2/value")
     Call<Double> getCO2();
 }
