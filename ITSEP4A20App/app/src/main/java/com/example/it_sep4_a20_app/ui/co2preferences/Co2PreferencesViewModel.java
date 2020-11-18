@@ -21,6 +21,6 @@ public class Co2PreferencesViewModel extends ViewModel {
     }
 
     public MutableLiveData<Integer> getCo2Max() {
-        return repo.;
+        return co2Max;
     }
 }

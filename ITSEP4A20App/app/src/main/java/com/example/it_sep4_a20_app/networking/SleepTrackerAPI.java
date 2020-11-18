@@ -10,5 +10,5 @@ public interface SleepTrackerAPI
     Call<Double> getCO2();
 
     @GET("/Settings")
-    Call<Settings> getSettings();
+    Call<Object> getSettings();
 }

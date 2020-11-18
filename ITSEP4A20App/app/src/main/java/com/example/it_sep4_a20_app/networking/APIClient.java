@@ -48,7 +48,7 @@ public class APIClient implements IAPIClient
         });
         return co2;
     }
-[[]]
+
     public MutableLiveData<Object> requestSettings(){
         Call<Object> call = api.getSettings();
         call.enqueue(new Callback<Object>() {
