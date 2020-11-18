@@ -7,4 +7,6 @@
     <string name="nav_header_subtitle">Here goes subtitle /TODO change</string>
     <string name="action_settings">Settings</string>
     <string name="menu_settings">Settings</string>
+    <string name="minCo2">Edit minimum Co2 levels</string>
+    <string name="maxCo2">Edit maximum Co2 levels</string>
 </resources>

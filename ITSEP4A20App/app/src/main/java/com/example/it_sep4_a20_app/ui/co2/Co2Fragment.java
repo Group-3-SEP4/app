@@ -42,7 +42,7 @@ public class Co2Fragment extends Fragment {
         mViewModel.getCO2().observe(getViewLifecycleOwner(), new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                String co2String = "CO2 Level: " + aDouble;
+                String co2String = "CO2 Level: " + aDouble + " ppm";
                 co2Reading.setText(co2String);
             }
         });

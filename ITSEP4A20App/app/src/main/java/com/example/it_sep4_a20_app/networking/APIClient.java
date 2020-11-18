@@ -14,6 +14,7 @@ public class APIClient implements IAPIClient
 {
     private SleepTrackerAPI api;
     private MutableLiveData<Double> co2;
+    private MutableLiveData<Object> settings;
 
     public APIClient(SleepTrackerAPI api)
     {
@@ -47,4 +48,24 @@ public class APIClient implements IAPIClient
         });
         return co2;
     }
+[[]]
+    public MutableLiveData<Object> requestSettings(){
+        Call<Object> call = api.getSettings();
+        call.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                settings.setValue(response.body());
+                Log.i("Retrofit", "Got settings");
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :<");
+                Log.i("Retrofit", t.getLocalizedMessage());
+                Log.i("Retrofit", t.toString());
+            }
+        });
+        return settings;
+    }
+
 }
