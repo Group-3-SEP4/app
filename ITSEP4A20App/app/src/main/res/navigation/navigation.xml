@@ -27,5 +27,7 @@
         android:id="@+id/nav_settings"
         android:name="com.example.it_sep4_a20_app.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
+
 </navigation>

@@ -7,4 +7,5 @@
     <string name="nav_header_subtitle">Here goes subtitle /TODO change</string>
     <string name="action_settings">Settings</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_co2_preferences">CO2 Preferences</string>
 </resources>

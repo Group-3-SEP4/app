@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <PreferenceCategory
+        app:key="preference_category"
+        app:title="Preferences">
+        <Preference
+            app:fragment="com.example.it_sep4_a20_app.ui.co2preferences.Co2PreferencesFragment"
+            app:key="co2_preferences"
+            app:title="CO2 Preferences"
+            app:summary="Setup CO2 preferences"/>
+        <Preference
+            app:title="Humidity Preferences"
+            app:summary="Setup Humidity preferences"/>
+
+        <Preference
+            app:title="Temperature Preferences"
+            app:summary="Setup Temperature preferences"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>
