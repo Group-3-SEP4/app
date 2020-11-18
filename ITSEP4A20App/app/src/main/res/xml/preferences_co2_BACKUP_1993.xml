@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="min"
+        android:key="key_co2Min"
+        android:title="@string/minCo2" />
+
+    <EditTextPreference
+        android:defaultValue=""
+        android:key="key_co2Max"
+        android:title="@string/maxCo2" />
+
+    <Preference
+        android:key="resetToDefault"
+        android:title="Reset to default"
+        android:summary="Reset co2 min and max to factory settings" />
+=======
+    
+>>>>>>> ab69916e8a657f389eb67b2677c90ef4cef37daa
+</PreferenceScreen>
