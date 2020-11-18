@@ -17,4 +17,9 @@ public class SettingsRepository {
         Log.i("Repository", "Calling request settings...");
         return apiClient.requestSettings();
     }
+
+    public boolean setSettings(Settings settings){
+        Log.i("Repository", "Calling post settings...");
+        return apiClient.postSettings(settings);
+    }
 }

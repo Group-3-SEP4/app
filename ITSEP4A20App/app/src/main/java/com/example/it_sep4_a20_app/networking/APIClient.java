@@ -15,6 +15,7 @@ public class APIClient implements IAPIClient
     private SleepTrackerAPI api;
     private MutableLiveData<Double> co2;
     private Settings settings;
+    private boolean settingsResponse;
 
     public APIClient(SleepTrackerAPI api)
     {
@@ -76,5 +77,22 @@ public class APIClient implements IAPIClient
         return settings;
     }
 
+    @Override
+    public boolean postSettings(Settings settings) {
+        Call<Settings> call = api.setSettings(settings);
+        call.enqueue(new Callback<Settings>() {
+            @Override
+            public void onResponse(Call<Settings> call, Response<Settings> response) {
+                if (response.code() == 200){
+                    settingsResponse = true;
+                }
+            }
+            @Override
+            public void onFailure(Call<Settings> call, Throwable t) {
+                settingsResponse = false;
+           }
+        });
+        return false;
+    }
 
 }
