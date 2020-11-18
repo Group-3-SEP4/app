@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app;
+package com.example.it_sep4_a20_app.repositories;
 
 import android.util.Log;
 
@@ -7,12 +7,13 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.it_sep4_a20_app.networking.APIClient;
 import com.example.it_sep4_a20_app.networking.IAPIClient;
 import com.example.it_sep4_a20_app.util.APIFactory;
+import com.example.it_sep4_a20_app.util.Settings;
 
-public class Repository
+public class ReadingsRepository
 {
     private IAPIClient apiClient;
 
-    public Repository()
+    public ReadingsRepository()
     {
         apiClient = APIFactory.getAPIClient();
     }
