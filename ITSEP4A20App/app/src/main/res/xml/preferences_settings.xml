@@ -7,7 +7,7 @@
         app:title="Preferences">
         <Preference
             app:fragment="com.example.it_sep4_a20_app.ui.co2preferences.Co2PreferencesFragment"
-            app:key="co2_preferences"
+            app:key="@string/key_preference_co2"
             app:title="CO2 Preferences"
             app:summary="Setup CO2 preferences"/>
         <Preference

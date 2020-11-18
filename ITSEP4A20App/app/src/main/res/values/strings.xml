@@ -15,5 +15,6 @@
     <string name="key_resetCo2">resetCo2Levels</string>
     <string name="title_resetCo2">Reset</string>
     <string name="summary_resetCo2">Reset MIN and MAX Co2 levels to recommended</string>
+    <string name="key_preference_co2">co2_preferences</string>
 
 </resources>
