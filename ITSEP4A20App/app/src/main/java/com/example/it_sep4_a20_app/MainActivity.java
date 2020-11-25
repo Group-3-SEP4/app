@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
                 , R.id.nav_co2
                 , R.id.nav_parameter
                 , R.id.nav_settings)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
