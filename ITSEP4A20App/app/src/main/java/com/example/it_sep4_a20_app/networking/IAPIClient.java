@@ -8,5 +8,5 @@ public interface IAPIClient
 {
     MutableLiveData<Double> requestCO2();
     Settings requestSettings();
-    boolean postSettings(Settings settings);
+    Settings postSettings(Settings settings);
 }

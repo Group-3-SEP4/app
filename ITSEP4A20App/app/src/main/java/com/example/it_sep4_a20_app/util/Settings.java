@@ -8,10 +8,11 @@ public class Settings {
     private int co2Max;
     private Room room;
 
-    public Settings(){
+    public Settings() {
     }
 
-    public Settings(int settingsId, String lastUpdate, double temperatureSetPoint, int co2Min, int co2Max, Room room) {
+    public Settings(int settingsId, String lastUpdate,
+                    double temperatureSetPoint, int co2Min, int co2Max, Room room) {
         this.settingsId = settingsId;
         this.lastUpdate = lastUpdate;
         this.temperatureSetPoint = temperatureSetPoint;

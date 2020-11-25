@@ -6,13 +6,11 @@ import com.example.it_sep4_a20_app.networking.UnsafeOkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ServiceGenerator
-{
+public class ServiceGenerator {
     //For online hosted API
     private static SleepTrackerAPI api;
 
-    public static SleepTrackerAPI getAPI()
-    {
+    public static SleepTrackerAPI getAPI() {
         if(api == null)
         {
             Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
@@ -27,8 +25,7 @@ public class ServiceGenerator
     //NOTE Only works with emulator
     private static SleepTrackerAPI apiLocalhost;
 
-    public static SleepTrackerAPI getAPILocalHost()
-    {
+    public static SleepTrackerAPI getAPILocalHost() {
         if(apiLocalhost == null)
         {
             Retrofit.Builder retrofitBuilderDummy = new Retrofit.Builder()

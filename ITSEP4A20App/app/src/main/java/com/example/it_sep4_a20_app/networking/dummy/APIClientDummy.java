@@ -19,12 +19,17 @@ public class APIClientDummy implements IAPIClient
     @Override
     public Settings requestSettings() {
         Room room = new Room();
-        Settings settings = new Settings(1,"01/01/0000", 22.5, 200, 2000, room);
+        Settings settings = new Settings(1
+                ,"01/01/0000"
+                , 22.5
+                , 200
+                , 2000
+                , room);
         return settings;
     }
 
     @Override
-    public boolean postSettings(Settings settings) {
-        return false;
+    public Settings postSettings(Settings settings) {
+        return null;
     }
 }

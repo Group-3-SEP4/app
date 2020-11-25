@@ -1,35 +1,30 @@
 package com.example.it_sep4_a20_app.networking;
 
 import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
-
 import com.example.it_sep4_a20_app.util.Settings;
-
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class APIClient implements IAPIClient
-{
+public class APIClient implements IAPIClient {
     private SleepTrackerAPI api;
     private MutableLiveData<Double> co2;
     private Settings settings;
-    private boolean settingsResponse;
+    private Settings settingsResponse;
 
-    public APIClient(SleepTrackerAPI api)
-    {
+    public APIClient(SleepTrackerAPI api) {
         this.api = api;
         co2 = new MutableLiveData<>();
         settings = new Settings();
+        settingsResponse = new Settings();
     }
 
     @Override
-    public MutableLiveData<Double> requestCO2()
-    {
+    public MutableLiveData<Double> requestCO2() {
         Call<Double> call = api.getCO2();
-        call.enqueue(new Callback<Double>()
-        {
+        call.enqueue(new Callback<Double>() {
             @Override
             public void onResponse(Call<Double> call, Response<Double> response)
             {
@@ -39,7 +34,6 @@ public class APIClient implements IAPIClient
                      Log.i("Retrofit", "Got value: " + co2);
                 }
             }
-
             @Override
             public void onFailure(Call<Double> call, Throwable t)
             {
@@ -51,24 +45,19 @@ public class APIClient implements IAPIClient
         return co2;
     }
 
-    public Settings requestSettings(){
-        Call<Settings> call = api.getSettings();
-        call.enqueue(new Callback<Settings>() {
+    @Override
+    public Settings requestSettings() {
+        Call<List<Settings>> call = api.getSettings();
+        call.enqueue(new Callback<List<Settings>>() {
             @Override
-            public void onResponse(Call<Settings> call, Response<Settings> response) {
+            public void onResponse(Call<List<Settings>> call, Response<List<Settings>> response) {
                 if (response.code() == 200){
-                    settings.setSettingsId(response.body().getSettingsId());
-                    settings.setLastUpdate(response.body().getLastUpdate());
-                    settings.setTemperatureSetPoint(response.body().getTemperatureSetPoint());
-                    settings.setCo2Min(response.body().getCo2Min());
-                    settings.setCo2Max(response.body().getCo2Max());
-                    settings.setRoom(response.body().getRoom());
+                    settings = response.body().get(0);
                     Log.i("Retrofit", "Got settings");
                 }
             }
-
             @Override
-            public void onFailure(Call<Settings> call, Throwable t) {
+            public void onFailure(Call<List<Settings>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :<");
                 Log.i("Retrofit", t.getLocalizedMessage());
                 Log.i("Retrofit", t.toString());
@@ -78,21 +67,24 @@ public class APIClient implements IAPIClient
     }
 
     @Override
-    public boolean postSettings(Settings settings) {
-        Call<Settings> call = api.setSettings(settings);
-        call.enqueue(new Callback<Settings>() {
+    public Settings postSettings(Settings settings) {
+        Call<List<Settings>> call = api.setSettings(settings);
+        call.enqueue(new Callback<List<Settings>>() {
             @Override
-            public void onResponse(Call<Settings> call, Response<Settings> response) {
+            public void onResponse(Call<List<Settings>> call, Response<List<Settings>> response) {
                 if (response.code() == 200){
-                    settingsResponse = true;
+                    settingsResponse = response.body().get(0);
+                    Log.i("Retrofit", "Settings have been posted");
                 }
+                Log.i("Retrofit", response.code() + "");
             }
             @Override
-            public void onFailure(Call<Settings> call, Throwable t) {
-                settingsResponse = false;
+            public void onFailure(Call<List<Settings>> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :<");
+                Log.i("Retrofit", t.getLocalizedMessage());
+                Log.i("Retrofit", t.toString());
            }
         });
-        return false;
+        return settingsResponse;
     }
-
 }

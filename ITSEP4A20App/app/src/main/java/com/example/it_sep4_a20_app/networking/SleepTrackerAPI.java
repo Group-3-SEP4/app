@@ -2,6 +2,8 @@ package com.example.it_sep4_a20_app.networking;
 
 import com.example.it_sep4_a20_app.util.Settings;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -13,8 +15,8 @@ public interface SleepTrackerAPI
     Call<Double> getCO2();
 
     @GET("/Settings")
-    Call<Settings> getSettings();
+    Call<List<Settings>> getSettings();
 
     @POST("/Settings")
-    Call<Settings> setSettings(@Body Settings settings);
+    Call<List<Settings>> setSettings(@Body Settings settings);
 }
