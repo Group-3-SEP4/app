@@ -29,13 +29,14 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
         Preference resetCo2 = findPreference(getString(R.string.key_resetCo2));
 
         viewModel = new ViewModelProvider(this).get(Co2PreferencesViewModel.class);
+
         viewModel.getSettings().observe(getViewLifecycleOwner(), new Observer<Settings>() {
             @Override
             public void onChanged(Settings settings) {
-                minCo2.setDefaultValue(settings.getCo2Min());
-                maxCo2.setDefaultValue(settings.getCo2Max());
-                minCo2.setSummary("Current minimum value is: " + settings.getCo2Min());
-                maxCo2.setSummary("Current maximum value is: " + settings.getCo2Max());
+                minCo2.setDefaultValue(settings.getPpmMin());
+                maxCo2.setDefaultValue(settings.getPpmMax());
+                minCo2.setSummary("Current minimum value is: " + settings.getPpmMin());
+                maxCo2.setSummary("Current maximum value is: " + settings.getPpmMax());
             }
         });
 

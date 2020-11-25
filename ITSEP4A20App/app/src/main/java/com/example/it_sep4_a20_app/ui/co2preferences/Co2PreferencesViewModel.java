@@ -15,38 +15,30 @@ public class Co2PreferencesViewModel extends ViewModel {
     public Co2PreferencesViewModel() {
         this.repo = new SettingsRepository();
         this.settings = new MutableLiveData<>();
+        settings.setValue(repo.getSettings());
     }
 
     public MutableLiveData<Settings> getSettings() {
-        settings.setValue(repo.getSettings());
         return settings;
     }
 
     public void setMINCO2(int minco2) {
         Settings temp = settings.getValue();
-        temp.setCo2Min(minco2);
+        temp.setPpmMin(minco2);
         settings.setValue(repo.setSettings(temp));
     }
 
     public void setMAXCO2(int maxco2) {
         Settings temp = settings.getValue();
-        temp.setCo2Max(maxco2);
+        temp.setPpmMax(maxco2);
         settings.setValue(repo.setSettings(temp));
     }
 
-    public Settings resetCo2Levels() {
+    public void resetCo2Levels() {
         Settings temp = settings.getValue();
-        temp.setCo2Max(MAXCO2);
-        temp.setCo2Min(MINCO2);
-        return repo.setSettings(temp);
+        temp.setPpmMax(MAXCO2);
+        temp.setPpmMin(MINCO2);
+        settings.setValue(repo.setSettings(temp));
     }
 
-    //
-//    public int getCo2Min() {
-//        return repo.getSettings().getCo2Min();
-//    }
-//
-//    public int getCo2Max() {
-//        return repo.getSettings().getCo2Max();
-//    }
 }

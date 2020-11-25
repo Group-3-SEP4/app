@@ -1,24 +1,26 @@
 package com.example.it_sep4_a20_app.util;
 
+import java.util.List;
+
 public class Settings {
     private int settingsId;
     private String lastUpdate;
     private double temperatureSetPoint;
-    private int co2Min;
-    private int co2Max;
-    private Room room;
+    private int ppmMin;
+    private int ppmMax;
+    private List<Room> room;
 
     public Settings() {
     }
 
     public Settings(int settingsId, String lastUpdate,
-                    double temperatureSetPoint, int co2Min, int co2Max, Room room) {
+                    double temperatureSetPoint, int co2Min, int co2Max, List<Room> rooms) {
         this.settingsId = settingsId;
         this.lastUpdate = lastUpdate;
         this.temperatureSetPoint = temperatureSetPoint;
-        this.co2Min = co2Min;
-        this.co2Max = co2Max;
-        this.room = room;
+        this.ppmMin = co2Min;
+        this.ppmMax = co2Max;
+        this.room = rooms;
     }
 
     public int getSettingsId() {
@@ -45,28 +47,28 @@ public class Settings {
         this.temperatureSetPoint = temperatureSetPoint;
     }
 
-    public void setCo2Min(int co2Min) {
-        this.co2Min = co2Min;
+    public void setPpmMin(int ppmMin) {
+        this.ppmMin = ppmMin;
     }
 
-    public void setCo2Max(int co2Max) {
-        this.co2Max = co2Max;
+    public void setPpmMax(int ppmMax) {
+        this.ppmMax = ppmMax;
     }
 
-    public int getCo2Min() {
-        return co2Min;
+    public int getPpmMin() {
+        return ppmMin;
     }
 
-    public int getCo2Max() {
-        return co2Max;
+    public int getPpmMax() {
+        return ppmMax;
     }
 
-    public Room getRoom() {
+    public List<Room> getRooms() {
         return room;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRooms(List<Room> rooms) {
+        this.room = rooms;
     }
 
 
