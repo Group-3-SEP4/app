@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/key_minCo2"
+        android:title="@string/title_editMinCo2"
+        />
+    <EditTextPreference
+        android:key="@string/key_maxCo2"
+        android:title="@string/title_editMaxCo2"
+        />
+    <Preference
+        android:key="@string/key_resetCo2"
+        android:title="@string/title_resetCo2"
+        android:summary="@string/summary_resetCo2"/>
+</PreferenceScreen>
