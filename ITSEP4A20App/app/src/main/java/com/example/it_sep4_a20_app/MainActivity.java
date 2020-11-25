@@ -1,8 +1,11 @@
 package com.example.it_sep4_a20_app;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(Color.rgb(103, 62, 106));
+
+
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -42,6 +49,13 @@ public class MainActivity extends AppCompatActivity
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // Lookup navigation view
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        // Inflate the header view at runtime
+        View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        // We can now look up items within the header if needed
+        //ImageView ivHeaderPhoto = headerLayout.findViewById(R.id.imageView);
     }
 
     @Override
