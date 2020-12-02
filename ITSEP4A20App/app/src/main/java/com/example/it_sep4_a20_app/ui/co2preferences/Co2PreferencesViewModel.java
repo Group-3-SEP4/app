@@ -1,9 +1,10 @@
 package com.example.it_sep4_a20_app.ui.co2preferences;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
-import com.example.it_sep4_a20_app.util.objects.Settings;
+import com.example.it_sep4_a20_app.data.models.Settings;
 
 public class Co2PreferencesViewModel extends ViewModel {
 
@@ -15,7 +16,7 @@ public class Co2PreferencesViewModel extends ViewModel {
         this.mRepo = new SettingsRepository();
     }
 
-    public MutableLiveData<Settings> getSettings() {
+    public LiveData<Settings> getSettings() {
         return mRepo.getSettings();
     }
 

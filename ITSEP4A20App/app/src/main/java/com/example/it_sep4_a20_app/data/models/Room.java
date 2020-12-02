@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.util.objects;
+package com.example.it_sep4_a20_app.data.models;
 
 public class Room {
     private int roomId;

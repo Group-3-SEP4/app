@@ -1,6 +1,8 @@
 package com.example.it_sep4_a20_app.networking;
 
 import android.util.Log;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
@@ -32,7 +34,7 @@ public class ReadingsAPIClient implements IReadingsAPICLient
         return mInstance;
     }
 
-    public MutableLiveData<Double> getCo2()
+    public LiveData<Double> getCo2()
     {
         return mCo2;
     }

@@ -13,7 +13,7 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import com.example.it_sep4_a20_app.R;
-import com.example.it_sep4_a20_app.util.objects.Settings;
+import com.example.it_sep4_a20_app.data.models.Settings;
 
 public class Co2PreferencesFragment extends PreferenceFragmentCompat {
 

@@ -1,6 +1,6 @@
 package com.example.it_sep4_a20_app.networking;
 
-import com.example.it_sep4_a20_app.util.objects.Settings;
+import com.example.it_sep4_a20_app.data.models.Settings;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

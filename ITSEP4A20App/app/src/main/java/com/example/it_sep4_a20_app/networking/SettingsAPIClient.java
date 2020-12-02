@@ -2,10 +2,11 @@ package com.example.it_sep4_a20_app.networking;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.it_sep4_a20_app.data.models.Settings;
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
-import com.example.it_sep4_a20_app.util.objects.Settings;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +36,7 @@ public class SettingsAPIClient implements ISettingsAPIClient
         return mInstance;
     }
 
-    public MutableLiveData<Settings> getSettings()
+    public LiveData<Settings> getSettings()
     {
         return mSettings;
     }
