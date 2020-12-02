@@ -8,16 +8,14 @@ import androidx.lifecycle.ViewModel;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 
 public class Co2ViewModel extends ViewModel {
-    private ReadingsRepository repo;
-    private MutableLiveData<Double> co2;
+    private ReadingsRepository mRepo;
 
     public Co2ViewModel() {
-        co2 = new MutableLiveData<>();
-        this.repo = new ReadingsRepository();
+        this.mRepo = new ReadingsRepository();
     }
 
     public LiveData<Double> getCO2()
     {
-        return repo.getCO2();
+        return mRepo.getCO2();
     }
 }

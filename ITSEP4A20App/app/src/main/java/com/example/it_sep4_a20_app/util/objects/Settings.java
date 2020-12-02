@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.util;
+package com.example.it_sep4_a20_app.util.objects;
 
 import java.util.List;
 

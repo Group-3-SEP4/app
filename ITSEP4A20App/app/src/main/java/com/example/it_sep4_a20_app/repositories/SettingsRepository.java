@@ -4,24 +4,27 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.it_sep4_a20_app.networking.IAPIClient;
-import com.example.it_sep4_a20_app.util.APIFactory;
-import com.example.it_sep4_a20_app.util.Settings;
+import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
+import com.example.it_sep4_a20_app.networking.SettingsAPIClient;
+import com.example.it_sep4_a20_app.util.objects.Settings;
 
 public class SettingsRepository {
-    private IAPIClient apiClient;
+    private ISettingsAPIClient mApiClient;
+
+    private static final String TAG = "ReadingsAPIClient";
 
     public SettingsRepository(){
-        apiClient = APIFactory.getAPIClient();
+        mApiClient = SettingsAPIClient.getInstance();
     }
 
-    public Settings getSettings() {
-        Log.i("Repository", "Calling request settings...");
-        return apiClient.requestSettings();
+    public MutableLiveData<Settings> getSettings() {
+        Log.i(TAG, "Calling request settings...");
+        mApiClient.requestSettings();
+        return mApiClient.getSettings();
     }
 
-    public Settings setSettings(Settings settings) {
-        Log.i("Repository", "Calling post settings...");
-        return apiClient.postSettings(settings);
+    public void setSettings(Settings settings) {
+        Log.i(TAG, "Calling post settings...");
+        mApiClient.postSettings(settings);
     }
 }

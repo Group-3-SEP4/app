@@ -13,11 +13,11 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import com.example.it_sep4_a20_app.R;
-import com.example.it_sep4_a20_app.util.Settings;
+import com.example.it_sep4_a20_app.util.objects.Settings;
 
 public class Co2PreferencesFragment extends PreferenceFragmentCompat {
 
-    private Co2PreferencesViewModel viewModel;
+    private Co2PreferencesViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -28,9 +28,9 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
         EditTextPreference maxCo2 = findPreference(getString(R.string.key_maxCo2));
         Preference resetCo2 = findPreference(getString(R.string.key_resetCo2));
 
-        viewModel = new ViewModelProvider(this).get(Co2PreferencesViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(Co2PreferencesViewModel.class);
 
-        viewModel.getSettings().observe(getViewLifecycleOwner(), new Observer<Settings>() {
+        mViewModel.getSettings().observe(getViewLifecycleOwner(), new Observer<Settings>() {
             @Override
             public void onChanged(Settings settings) {
                 minCo2.setDefaultValue(settings.getPpmMin());
@@ -42,17 +42,17 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
 
         //sets Co2 preferences to factory values
         resetCo2.setOnPreferenceClickListener(preference -> {
-            viewModel.resetCo2Levels();
+            mViewModel.resetCo2Levels();
             return true;
         });
 
         minCo2.setOnPreferenceChangeListener((preference, newValue) -> {
-            viewModel.setMINCO2((Integer.parseInt(newValue.toString())));
+            mViewModel.setMINCO2((Integer.parseInt(newValue.toString())));
             return true;
         });
 
         maxCo2.setOnPreferenceChangeListener((preference, newValue) -> {
-            viewModel.setMAXCO2((Integer.parseInt(newValue.toString())));
+            mViewModel.setMAXCO2((Integer.parseInt(newValue.toString())));
             return true;
         });
 

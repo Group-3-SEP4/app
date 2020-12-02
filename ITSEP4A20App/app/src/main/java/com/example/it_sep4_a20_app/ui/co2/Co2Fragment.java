@@ -17,7 +17,7 @@ public class Co2Fragment extends Fragment {
 
     private Co2ViewModel mViewModel;
 
-    private TextView co2Reading;
+    private TextView mCo2Reading;
 
     public static Co2Fragment newInstance() {
         return new Co2Fragment();
@@ -28,7 +28,7 @@ public class Co2Fragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_co2, container, false);
-        co2Reading = root.findViewById(R.id.textView_co2);
+        mCo2Reading = root.findViewById(R.id.textView_co2);
         return root;
     }
 
@@ -40,7 +40,7 @@ public class Co2Fragment extends Fragment {
             @Override
             public void onChanged(Double aDouble) {
                 String co2String = "CO2 Level: " + aDouble + " ppm";
-                co2Reading.setText(co2String);
+                mCo2Reading.setText(co2String);
             }
         });
     }
