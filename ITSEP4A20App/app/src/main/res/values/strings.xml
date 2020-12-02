@@ -6,4 +6,15 @@
     <string name="navigationView">Navigation</string>
     <string name="nav_header_subtitle">Here goes subtitle /TODO change</string>
     <string name="action_settings">Settings</string>
+    <string name="menu_settings">Settings</string>
+    <string name="key_minCo2">minCo2Level</string>
+    <string name="key_maxCo2">maxCo2Level</string>
+    <string name="title_editMinCo2">Edit minimum Co2 levels</string>
+    <string name="title_editMaxCo2">Edit maximum Co2 levels</string>
+    <string name="title_Reset">Reset</string>
+    <string name="key_resetCo2">resetCo2Levels</string>
+    <string name="title_resetCo2">Reset</string>
+    <string name="summary_resetCo2">Reset MIN and MAX Co2 levels to recommended</string>
+    <string name="key_preference_co2">co2_preferences</string>
+
 </resources>

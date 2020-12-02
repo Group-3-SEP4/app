@@ -2,13 +2,10 @@ package com.example.it_sep4_a20_app.ui.co2;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +39,7 @@ public class Co2Fragment extends Fragment {
         mViewModel.getCO2().observe(getViewLifecycleOwner(), new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                String co2String = "CO2 Level: " + aDouble;
+                String co2String = "CO2 Level: " + aDouble + " ppm";
                 co2Reading.setText(co2String);
             }
         });

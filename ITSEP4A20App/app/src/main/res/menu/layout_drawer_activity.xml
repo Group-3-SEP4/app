@@ -14,6 +14,10 @@
             android:id="@+id/nav_co2"
             android:icon="@drawable/i_item_co2"
             android:title="CO2" />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings" />
+
 
     </group>
 
