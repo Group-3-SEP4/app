@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.ui.co2preferences;
+package com.example.it_sep4_a20_app.ui.preferences.co2preference;
 
 import android.os.Bundle;
 
