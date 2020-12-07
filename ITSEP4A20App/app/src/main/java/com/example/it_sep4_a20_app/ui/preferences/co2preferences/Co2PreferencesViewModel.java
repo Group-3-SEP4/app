@@ -1,7 +1,6 @@
-package com.example.it_sep4_a20_app.ui.co2preferences;
+package com.example.it_sep4_a20_app.ui.preferences.co2preferences;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 import com.example.it_sep4_a20_app.data.models.Settings;
