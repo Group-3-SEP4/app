@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.ui.preferences.temperaturepreferences;
+package com.example.it_sep4_a20_app.ui.preferences.temperaturepreference;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ import com.example.it_sep4_a20_app.R;
 
 public class TemperaturePreference extends PreferenceFragmentCompat
 {
-    private TemperatureViewModel mViewModel;
+    private TemperaturePreferenceViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -27,7 +27,7 @@ public class TemperaturePreference extends PreferenceFragmentCompat
         EditTextPreference maxTemp = findPreference(getString(R.string.key_maxTemperature));
         Preference resetMaxTemp = findPreference(getString(R.string.key_resetTemperature));
 
-        mViewModel = new ViewModelProvider(this).get(TemperatureViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(TemperaturePreferenceViewModel.class);
 
         mViewModel.getSettings().observe(getViewLifecycleOwner(), settings ->
         {

@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.ui.preferences.temperaturepreferences;
+package com.example.it_sep4_a20_app.ui.preferences.temperaturepreference;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel;
 import com.example.it_sep4_a20_app.data.models.Settings;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
-public class TemperatureViewModel extends ViewModel
+public class TemperaturePreferenceViewModel extends ViewModel
 {
     private SettingsRepository mRepo;
     private final int MAXTEMP = 40;
 
-    public TemperatureViewModel() {
+    public TemperaturePreferenceViewModel() {
         this.mRepo = new SettingsRepository();
     }
 
