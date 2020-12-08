@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         app:key="preference_category"
         app:title="Preferences">
@@ -13,10 +12,11 @@
         <Preference
             app:title="Humidity Preferences"
             app:summary="Setup Humidity preferences"/>
-
         <Preference
             app:title="Temperature Preferences"
-            app:summary="Setup Temperature preferences"/>
+            app:summary="Setup Temperature preferences"
+            app:key="@string/key_preference_temp"
+            android:summary="Setup temperature preferences"/>
 
     </PreferenceCategory>
 </PreferenceScreen>

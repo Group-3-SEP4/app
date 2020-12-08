@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.ui.settings;
+package com.example.it_sep4_a20_app.ui.preferences.settings;
 
 import android.os.Bundle;
 import androidx.navigation.Navigation;
@@ -17,6 +17,13 @@ public class SettingsFragment extends PreferenceFragmentCompat
         co2Preference.setOnPreferenceClickListener(preference ->
         {
             Navigation.findNavController(getView()).navigate(R.id.nav_co2_preferences);
+            return true;
+        });
+
+        Preference tempPreference = findPreference(getString(R.string.key_preference_temp));
+        tempPreference.setOnPreferenceClickListener(preference ->
+        {
+            Navigation.findNavController(getView()).navigate(R.id.nav_temp_preferences);
             return true;
         });
     }

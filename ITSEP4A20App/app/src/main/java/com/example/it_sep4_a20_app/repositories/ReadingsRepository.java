@@ -13,7 +13,7 @@ public class ReadingsRepository
 {
     private IReadingsAPIClient mApiClient;
 
-    private static final String TAG = "ReadingsAPIClient";
+    private static final String TAG = "ReadingsRepository";
 
     public ReadingsRepository()
     {

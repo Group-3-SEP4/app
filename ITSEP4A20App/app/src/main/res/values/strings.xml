@@ -16,5 +16,12 @@
     <string name="title_resetCo2">Reset</string>
     <string name="summary_resetCo2">Reset MIN and MAX Co2 levels to recommended</string>
     <string name="key_preference_co2">co2_preferences</string>
-
+    <string name="summary_resetTemperature">Reset MIN and MAX temperature to recommended</string>
+    <string name="current_max_temperature">Current max temperature %1$.1f C</string>
+    <string name="title_editMaxTemperature">Edit maximum temperature</string>
+    <string name="key_maxTemperature">maxTemperature</string>
+    <string name="key_resetTemperature">resetTemperature</string>
+    <string name="title_resetTemperature">Reset temperature</string>
+    <string name="is_an_invalid_number">Input must be a number</string>
+    <string name="key_preference_temp">temp_preference</string>
 </resources>

@@ -12,7 +12,7 @@ import com.example.it_sep4_a20_app.data.models.Settings;
 public class SettingsRepository {
     private ISettingsAPIClient mApiClient;
 
-    private static final String TAG = "ReadingsAPIClient";
+    private static final String TAG = "SettingsRepository";
 
     public SettingsRepository(){
         mApiClient = SettingsAPIClient.getInstance();
