@@ -3,19 +3,17 @@ package com.example.it_sep4_a20_app.networking.dummy;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-<<<<<<< HEAD
-import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
-=======
-import com.example.it_sep4_a20_app.data.models.Settings;
-import com.example.it_sep4_a20_app.networking.IReadingsAPICLient;
-import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
->>>>>>> develop
 
-public class APIDummy implements ISettingsAPIClient
+import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
+import com.example.it_sep4_a20_app.data.models.Settings;
+import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
+import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
+
+
+public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
 {
 
-<<<<<<< HEAD
-=======
+    private MutableLiveData<LiveMeasurements> liveMeasurementsMutableLiveData;
     private MutableLiveData<Settings> settingsMutableLiveData;
     public APIDummy()
     {
@@ -23,6 +21,10 @@ public class APIDummy implements ISettingsAPIClient
         Settings settings = new Settings();
         settings.setTemperatureSetPoint(32.0);
         settingsMutableLiveData.setValue(settings);
+
+        liveMeasurementsMutableLiveData = new MutableLiveData<>();
+        LiveMeasurements measurements = new LiveMeasurements(70, 800, 24);
+        liveMeasurementsMutableLiveData.setValue(measurements);
     }
 
 
@@ -43,5 +45,14 @@ public class APIDummy implements ISettingsAPIClient
     {
         settingsMutableLiveData.setValue(newSettings);
     }
->>>>>>> develop
+
+    @Override
+    public LiveData<LiveMeasurements> getLiveMeasurements() {
+        return liveMeasurementsMutableLiveData;
+    }
+
+    @Override
+    public void requestMeasurements() {
+
+    }
 }

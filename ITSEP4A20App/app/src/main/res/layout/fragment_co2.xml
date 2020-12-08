@@ -9,15 +9,14 @@
     android:padding="30dp"
     tools:context=".ui.co2.Co2Fragment">
 
-
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart_co2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="14dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></com.github.mikephil.charting.charts.PieChart>
 
@@ -25,7 +24,7 @@
         android:id="@+id/textView_co2Reading"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/view_border"
         android:gravity="center"
         android:text="0 ppm"
@@ -33,25 +32,25 @@
         android:textColor="@color/purple"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart_temperature"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="236dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/chart_co2" />
 
     <TextView
         android:id="@+id/textView_temperatureReading"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="95dp"
         android:background="@drawable/view_border"
         android:gravity="center"
         android:text="0 °C"
@@ -59,25 +58,25 @@
         android:textColor="@color/purple"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_co2Reading" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart_humidity"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="456dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/chart_temperature" />
 
     <TextView
         android:id="@+id/textView_humidityReading"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="95dp"
         android:background="@drawable/view_border"
         android:gravity="center"
         android:text="0 %"
@@ -85,7 +84,7 @@
         android:textColor="@color/purple"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_temperatureReading" />
 
