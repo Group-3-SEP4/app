@@ -42,7 +42,12 @@ public class NightOverviewFragment extends Fragment
         findViews(root);
         mViewModel = new ViewModelProvider(this).get(NightOverviewViewModel.class);
         mPrefs = root.getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        setObserver();
+        return root;
+    }
 
+    private void setObserver()
+    {
         mViewModel.getNightOverview().observe(getViewLifecycleOwner(), nightOverview ->
         {
             mTempMin.setText(getResources().getString(R.string.text_temperature_min, nightOverview.getTempMin()));
@@ -69,8 +74,8 @@ public class NightOverviewFragment extends Fragment
             mHumiMax7days.setText(getResources().getString(R.string.text_co2_max, nightOverview.getHumiMax7days()));
             mHumiAvg7days.setText(getResources().getString(R.string.text_co2_avg, nightOverview.getHumiAvg7days()));
 
-            if(nightOverview.getTempAvg() >= mPrefs.getFloat("max_temperature",40)
-            || nightOverview.getTempAvg() <= mPrefs.getFloat("min_temperature", 10))
+            if(nightOverview.getTempAvg() > mPrefs.getFloat("max_temperature",40)
+            || nightOverview.getTempAvg() < mPrefs.getFloat("min_temperature", 10))
             {
                 mTempImage.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
             }
@@ -79,8 +84,8 @@ public class NightOverviewFragment extends Fragment
                 mTempImage.setImageResource(R.drawable.ic_baseline_check_box_24);
             }
 
-            if(nightOverview.getCo2Avg() >= mPrefs.getFloat("max_co2",100)
-            || nightOverview.getCo2Avg() <= mPrefs.getFloat("min_co2",0))
+            if(nightOverview.getCo2Avg() > mPrefs.getFloat("max_co2",100)
+            || nightOverview.getCo2Avg() < mPrefs.getFloat("min_co2",0))
             {
                 mCo2Image.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
             }
@@ -89,8 +94,8 @@ public class NightOverviewFragment extends Fragment
                 mCo2Image.setImageResource(R.drawable.ic_baseline_check_box_24);
             }
 
-            if(nightOverview.getHumiAvg() >= mPrefs.getFloat("max_humidity",100)
-            || nightOverview.getHumiAvg() <= mPrefs.getFloat("min_humidity", 0))
+            if(nightOverview.getHumiAvg() > mPrefs.getFloat("max_humidity",100)
+            || nightOverview.getHumiAvg() < mPrefs.getFloat("min_humidity", 0))
             {
                 mHumiImage.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
             }
@@ -99,7 +104,6 @@ public class NightOverviewFragment extends Fragment
                 mHumiImage.setImageResource(R.drawable.ic_baseline_check_box_24);
             }
         });
-        return root;
     }
 
     private void findViews(@NonNull View root)

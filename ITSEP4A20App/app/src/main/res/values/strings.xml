@@ -39,4 +39,12 @@
     <string name="text_humidity_max">Max: %1$.1f %%RH</string>
     <string name="text_humidity_avg">AVG: %1$.1f %%RH</string>
     <string name="title_last7days">Last 7 days</string>
+    <string name="key_minTemperature">minTemperature</string>
+    <string name="title_editMinTemperature">Edit minimum temperature</string>
+    <string name="key_maxHumidity">maxHumidity</string>
+    <string name="title_editMaxHumidity">Edit max humidity</string>
+    <string name="key_minHumidity">minHumidity</string>
+    <string name="title_editMinHumidity">Edit minimum humidity</string>
+    <string name="key_resetHumidity">resetHumidity</string>
+    <string name="title_resetHumidity">Reset humidity to recommended</string>
 </resources>

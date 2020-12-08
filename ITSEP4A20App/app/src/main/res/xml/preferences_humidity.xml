@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/key_maxHumidity"
+        android:title="@string/title_editMaxHumidity" />
+    <EditTextPreference
+        android:key="@string/key_minHumidity"
+        android:title="@string/title_editMinHumidity" />
+    <Preference
+        android:key="@string/key_resetHumidity"
+        android:title="@string/title_resetHumidity" />
+</PreferenceScreen>
