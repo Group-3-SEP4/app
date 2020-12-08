@@ -5,24 +5,26 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ReadingsAPIClient implements IReadingsAPICLient
+public class ReadingsAPIClient implements IReadingsAPIClient
 {
     private static ReadingsAPIClient mInstance;
     private SleepTrackerAPI mApi;
-    private MutableLiveData<Double> mCo2;
+    private MutableLiveData<LiveMeasurements> mLiveMeasurement;
+
+    private final String mTempDeviceEui = "0004A30B00219CAC";
 
     private static final String TAG = "ReadingsAPIClient";
 
     private ReadingsAPIClient() {
         this.mApi = ServiceGenerator.getAPI();
-        mCo2 = new MutableLiveData<>();
-        mCo2.setValue(0.0);
+        mLiveMeasurement = new MutableLiveData<>();
     }
 
     public static ReadingsAPIClient getInstance()
@@ -34,33 +36,34 @@ public class ReadingsAPIClient implements IReadingsAPICLient
         return mInstance;
     }
 
-    public LiveData<Double> getCo2()
-    {
-        return mCo2;
+    @Override
+    public LiveData<LiveMeasurements> getLiveMeasurements() {
+        return mLiveMeasurement;
     }
 
     @Override
-    public void requestCO2() {
-        Call<Double> call = mApi.getCO2();
-        call.enqueue(new Callback<Double>() {
+    public void requestMeasurements() {
+        Call<LiveMeasurements> call = mApi.getLiveMeasurement(mTempDeviceEui);
+        call.enqueue(new Callback<LiveMeasurements>() {
             @Override
-            public void onResponse(Call<Double> call, Response<Double> response)
-            {
+            public void onResponse(Call<LiveMeasurements> call, Response<LiveMeasurements> response) {
                 if(response.code() == 200)
                 {
-                     mCo2.setValue(response.body());
-                     Log.i(TAG, "Got value: " + mCo2);
+                    mLiveMeasurement.setValue(response.body());
+                    Log.i(TAG, "Got live measurements: ");
+                    Log.i(TAG, "Got CO2: " + mLiveMeasurement.getValue().getCarbonDioxide() + " ppm");
+                    Log.i(TAG, "Got Temperature: " + mLiveMeasurement.getValue().getTemperature()+ " °C");
+                    Log.i(TAG, "Got Humidity: " + mLiveMeasurement.getValue().getHumidityPercentage() +" %");
                 }
                 Log.d(TAG, response.code() + "");
             }
+
             @Override
-            public void onFailure(Call<Double> call, Throwable t)
-            {
+            public void onFailure(Call<LiveMeasurements> call, Throwable t) {
                 Log.i(TAG, "Something went wrong :<");
                 Log.i(TAG, t.getLocalizedMessage());
                 Log.i(TAG, t.toString());
             }
         });
     }
-
 }

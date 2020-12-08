@@ -3,15 +3,15 @@ package com.example.it_sep4_a20_app.repositories;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import com.example.it_sep4_a20_app.networking.IReadingsAPICLient;
+import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
+import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
 import com.example.it_sep4_a20_app.networking.ReadingsAPIClient;
 
 
 public class ReadingsRepository
 {
-    private IReadingsAPICLient mApiClient;
+    private IReadingsAPIClient mApiClient;
 
     private static final String TAG = "ReadingsAPIClient";
 
@@ -20,9 +20,9 @@ public class ReadingsRepository
         mApiClient = ReadingsAPIClient.getInstance();
     }
 
-    public LiveData<Double> getCO2() {
-        Log.i(TAG, "Calling request co2...");
-        mApiClient.requestCO2();
-        return mApiClient.getCo2();
+    public LiveData<LiveMeasurements> getLiveMeasurements() {
+        Log.i(TAG, "Calling request for measurements...");
+        mApiClient.requestMeasurements();
+        return mApiClient.getLiveMeasurements();
     }
 }
