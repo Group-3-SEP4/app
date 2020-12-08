@@ -15,6 +15,10 @@
             android:icon="@drawable/i_item_co2"
             android:title="CO2" />
         <item
+            android:id="@+id/nav_night_overview"
+            android:icon="@drawable/ic_baseline_article_24"
+            android:title="Night Overview"/>
+        <item
             android:id="@+id/nav_settings"
             android:title="Settings" />
 

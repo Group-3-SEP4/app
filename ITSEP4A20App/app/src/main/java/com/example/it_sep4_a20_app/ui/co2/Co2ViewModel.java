@@ -11,7 +11,7 @@ public class Co2ViewModel extends ViewModel {
     private ReadingsRepository mRepo;
 
     public Co2ViewModel() {
-        this.mRepo = new ReadingsRepository();
+        this.mRepo = ReadingsRepository.getInstance();
     }
 
     public LiveData<Double> getCO2()

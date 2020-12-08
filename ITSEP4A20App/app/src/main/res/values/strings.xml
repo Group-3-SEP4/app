@@ -24,4 +24,19 @@
     <string name="title_resetTemperature">Reset temperature</string>
     <string name="is_an_invalid_number">Input must be a number</string>
     <string name="key_preference_temp">temp_preference</string>
+    <string name="title_this_night">This night</string>
+    <string name="title_night_status">It was a good night :)</string>
+    <string name="title_temperature">Temperature</string>
+    <string name="text_temperature_min">Min: %1$.1f C</string>
+    <string name="text_temperature_max">Max: %1$.1f C</string>
+    <string name="text_temperature_avg">AVG: %1$.1f C</string>
+    <string name="title_co2">CO2</string>
+    <string name="text_co2_min">Min: %1$.1f ppm</string>
+    <string name="text_co2_max">Max: %1$.1f ppm</string>
+    <string name="text_co2_avg">AVG: %1$.1f ppm</string>
+    <string name="title_humidity">Humidity</string>
+    <string name="text_humidity_min">Min: %1$.1f %%RH</string>
+    <string name="text_humidity_max">Max: %1$.1f %%RH</string>
+    <string name="text_humidity_avg">AVG: %1$.1f %%RH</string>
+    <string name="title_last7days">Last 7 days</string>
 </resources>

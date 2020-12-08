@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
 
 import retrofit2.Call;
@@ -16,12 +17,13 @@ public class ReadingsAPIClient implements IReadingsAPICLient
     private static ReadingsAPIClient mInstance;
     private SleepTrackerAPI mApi;
     private MutableLiveData<Double> mCo2;
-
+    private MutableLiveData<NightOverview> mNightOverview;
     private static final String TAG = "ReadingsAPIClient";
 
     private ReadingsAPIClient() {
         this.mApi = ServiceGenerator.getAPI();
         mCo2 = new MutableLiveData<>();
+        mNightOverview = new MutableLiveData<>();
         mCo2.setValue(0.0);
     }
 
@@ -63,4 +65,9 @@ public class ReadingsAPIClient implements IReadingsAPICLient
         });
     }
 
+    @Override
+    public LiveData<NightOverview> NightOverview()
+    {
+        return null;
+    }
 }
