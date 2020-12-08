@@ -1,18 +1,18 @@
 package com.example.it_sep4_a20_app.data.models;
 
 public class Room {
-    private int roomId;
+    private String roomId;
     private int settingsId;
     private String name;
 
     public Room(){
     }
 
-    public int getRoomId() {
+    public String getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(String roomId) {
         this.roomId = roomId;
     }
 

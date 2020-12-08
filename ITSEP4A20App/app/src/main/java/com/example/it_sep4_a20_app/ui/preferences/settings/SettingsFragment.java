@@ -35,5 +35,12 @@ public class SettingsFragment extends PreferenceFragmentCompat
             Navigation.findNavController(getView()).navigate(R.id.nav_humidity_preferences);
             return true;
         });
+
+        Preference devicePreference = findPreference(getString(R.string.key_preference_device));
+        devicePreference.setOnPreferenceClickListener(preference ->
+        {
+            Navigation.findNavController(getView()).navigate(R.id.nav_device_preferences);
+            return true;
+        });
     }
 }
