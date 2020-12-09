@@ -12,7 +12,7 @@ import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
 
 public class SettingsRepository {
     private ISettingsAPIClient mApiClient;
-//    private APIDummy mApiClient;
+//    private APIDummy mApiClient; for testing
 
     private static final String TAG = "SettingsRepository";
 

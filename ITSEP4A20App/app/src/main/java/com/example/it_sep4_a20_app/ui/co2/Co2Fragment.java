@@ -120,11 +120,9 @@ public class Co2Fragment extends Fragment {
             float temp = range;
             value =(int) temp;
         }
-
+        //Adding data to data set
         values.add(new PieEntry((float) value));
         values.add(new PieEntry((float) range - value));
-
-
 
         PieDataSet dataSet = new PieDataSet(values, "Co2 live reading");
         dataSet.setSliceSpace(3f);
@@ -132,9 +130,9 @@ public class Co2Fragment extends Fragment {
 
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
-                    , getContext().getColor(R.color.purple_200)});
+                    , getContext().getColor(R.color.white)});
         } else {
-            dataSet.setColor(getContext().getColor(R.color.red_warning_900), 255);
+            dataSet.setColor(getContext().getColor(R.color.red_warning_900), 200);
         }
 
         PieData data = new PieData(dataSet);
@@ -163,7 +161,7 @@ public class Co2Fragment extends Fragment {
 
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
-                                      , getContext().getColor(R.color.purple_200)});
+                                      , getContext().getColor(R.color.white)});
         } else {
             dataSet.setColor(getContext().getColor(R.color.red_warning_900), 200);
         }
@@ -194,7 +192,7 @@ public class Co2Fragment extends Fragment {
 
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
-                                      , getContext().getColor(R.color.purple_200)});
+                                      , getContext().getColor(R.color.white)});
         } else {
             dataSet.setColor(getContext().getColor(R.color.red_warning_900), 200);
         }
