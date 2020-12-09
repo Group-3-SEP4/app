@@ -19,8 +19,9 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     private SleepTrackerAPI mApi;
     private MutableLiveData<LiveMeasurements> mLiveMeasurement;
 
+    //Temporary deviceEui
     private final String mTempDeviceEui = "0004A30B00219CAC";
-
+    //TAG for log reports
     private static final String TAG = "ReadingsAPIClient";
 
     private ReadingsAPIClient() {

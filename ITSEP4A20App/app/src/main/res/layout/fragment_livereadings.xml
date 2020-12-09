@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/white"
     android:padding="30dp"
-    tools:context=".ui.co2.Co2Fragment">
+    tools:context=".ui.livereadings.LiveReadingsFragment">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart_co2"
@@ -27,6 +27,7 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/view_border"
         android:gravity="center"
+        android:padding="3dp"
         android:text="0 ppm"
         android:textAlignment="center"
         android:textColor="@color/purple"
@@ -53,6 +54,7 @@
         android:layout_marginTop="95dp"
         android:background="@drawable/view_border"
         android:gravity="center"
+        android:padding="3dp"
         android:text="0 °C"
         android:textAlignment="center"
         android:textColor="@color/purple"
@@ -79,6 +81,7 @@
         android:layout_marginTop="95dp"
         android:background="@drawable/view_border"
         android:gravity="center"
+        android:padding="3dp"
         android:text="0 %"
         android:textAlignment="center"
         android:textColor="@color/purple"

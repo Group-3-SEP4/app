@@ -19,8 +19,8 @@ public class ReadingsRepository
 
     public ReadingsRepository()
     {
-        mApiClient = new APIDummy();
-//        mApiClient = ReadingsAPIClient.getInstance();
+//        mApiClient = new APIDummy();
+        mApiClient = ReadingsAPIClient.getInstance();
     }
 
     public LiveData<LiveMeasurements> getLiveMeasurements() {

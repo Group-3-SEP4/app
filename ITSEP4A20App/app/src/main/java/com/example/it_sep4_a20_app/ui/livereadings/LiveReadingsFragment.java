@@ -1,4 +1,4 @@
-package com.example.it_sep4_a20_app.ui.co2;
+package com.example.it_sep4_a20_app.ui.livereadings;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,24 +23,24 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
 
-public class Co2Fragment extends Fragment {
+public class LiveReadingsFragment extends Fragment {
 
-    private Co2ViewModel mViewModel;
-
+    private LiveReadingsViewModel mViewModel;
+    //TextViews
     private TextView mCo2Reading;
     private TextView mTemperatureReading;
     private TextView mHumidityReading;
-
+    //Pie charts
     private PieChart mChartCo2;
     private PieChart mChartTemperature;
     private PieChart mChartHumidity;
-
-    private final int MAX_CO2 = 1500;
-    private final int MAX_TEMPERATURE = 70;
+    //Max values for suitable living situation
+    private final int MAX_CO2 = 1000;
+    private final int MAX_TEMPERATURE = 40;
     private final int MAX_HUMIDITY = 100;
 
-    public static Co2Fragment newInstance() {
-        return new Co2Fragment();
+    public static LiveReadingsFragment newInstance() {
+        return new LiveReadingsFragment();
     }
 
     @Override
@@ -48,23 +48,20 @@ public class Co2Fragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_livereadings, container, false);
+
         mCo2Reading = root.findViewById(R.id.textView_co2Reading);
         mHumidityReading = root.findViewById(R.id.textView_humidityReading);
         mTemperatureReading = root.findViewById(R.id.textView_temperatureReading);
-        mCo2Reading.bringToFront();
-        mHumidityReading.bringToFront();
 
         mChartCo2 = root.findViewById(R.id.chart_co2);
-        mChartCo2.setMaxAngle(270f);
-        mChartCo2.setRotation(0f);
+        mChartCo2.setMaxAngle(270f); // Sets max angle of the graph to be 270°
         mChartCo2.animateY(1400, Easing.EaseInOutQuad);
-        mChartCo2.setTouchEnabled(false);
-        mChartCo2.getLegend().setEnabled(false);
-        mChartCo2.getDescription().setEnabled(false);
+        mChartCo2.setTouchEnabled(false); // Disables graph intractability
+        mChartCo2.getLegend().setEnabled(false); // Disables legend
+        mChartCo2.getDescription().setEnabled(false); // Disables description
 
         mChartTemperature = root.findViewById(R.id.chart_temperature);
         mChartTemperature.setMaxAngle(270f);
-        mChartTemperature.setRotation(0f);
         mChartTemperature.animateY(1400, Easing.EaseInOutQuad);
         mChartTemperature.setTouchEnabled(false);
         mChartTemperature.getLegend().setEnabled(false);
@@ -72,7 +69,6 @@ public class Co2Fragment extends Fragment {
 
         mChartHumidity = root.findViewById(R.id.chart_humidity);
         mChartHumidity.setMaxAngle(270f);
-        mChartHumidity.setRotation(0f);
         mChartHumidity.animateY(1400, Easing.EaseInOutQuad);
         mChartHumidity.setTouchEnabled(false);
         mChartHumidity.getLegend().setEnabled(false);
@@ -83,27 +79,27 @@ public class Co2Fragment extends Fragment {
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(Co2ViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(LiveReadingsViewModel.class);
         mViewModel.getLiveMeasurements().observe(getViewLifecycleOwner(), new Observer<LiveMeasurements>() {
             @Override
             public void onChanged(LiveMeasurements liveMeasurements) {
 
-                //initializing co2, temperature, humidity after it has been changed
+                // Initializing co2, temperature, humidity after it has been changed
                 int co2 = liveMeasurements.getCarbonDioxide();
                 double temperature = liveMeasurements.getTemperature();
                 int humidity = liveMeasurements.getHumidityPercentage();
 
-                // putting it in to strings or textView
+                // Putting it in to strings or textView
                 String co2Reading = co2 + " ppm";
                 String temperatureReading = temperature + " °C";
                 String humidityReading = humidity + " %";
 
-                //setting graphs
+                // Setting graphs
                 setDataCo2(2, MAX_CO2, co2);
                 setDataTemperature(2, MAX_TEMPERATURE, temperature);
                 setDataHumidity(2, MAX_HUMIDITY, humidity);
 
-                //setting textViews
+                // Setting textViews
                 mCo2Reading.setText(co2Reading);
                 mHumidityReading.setText(humidityReading);
                 mTemperatureReading.setText(temperatureReading);
@@ -113,19 +109,19 @@ public class Co2Fragment extends Fragment {
 
     public void setDataCo2(int count, float range, int value) {
         ArrayList<PieEntry> values = new ArrayList<>();
-
+        // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
             float temp = range;
             value =(int) temp;
         }
-        //Adding data to data set
+        // Adding data to data set
         values.add(new PieEntry((float) value));
         values.add(new PieEntry((float) range - value));
 
         PieDataSet dataSet = new PieDataSet(values, "Co2 live reading");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
-
+        // Changes color if the measured value is out of bounds
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
                     , getContext().getColor(R.color.white)});
@@ -137,19 +133,20 @@ public class Co2Fragment extends Fragment {
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(0f);
         data.setValueTextColor(Color.WHITE);
+        // Sets data in the chart
         mChartCo2.setData(data);
-
+        // Informs the chart about changes and displays them
         mChartCo2.invalidate();
     }
 
     public void setDataTemperature(int count, float range, double value) {
         ArrayList<PieEntry> values = new ArrayList<>();
-
+        // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
             float temp = range;
             value =(double) temp;
         }
-
+        // Adding data to data set
         values.add(new PieEntry ((float) value));
         values.add(new PieEntry ((float) range - ((float) value)));
 
@@ -157,6 +154,7 @@ public class Co2Fragment extends Fragment {
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
+        // Changes color if the measured value is out of bounds
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
                                       , getContext().getColor(R.color.white)});
@@ -168,19 +166,20 @@ public class Co2Fragment extends Fragment {
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(0f);
         data.setValueTextColor(Color.WHITE);
+        // Sets data in the chart
         mChartTemperature.setData(data);
-
+        // Informs the chart about changes and displays them
         mChartTemperature.invalidate();
     }
 
     public void setDataHumidity(int count, float range, int value) {
         ArrayList<PieEntry> values = new ArrayList<>();
-
+        // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
             float temp = range;
             value =(int) temp;
         }
-
+        // Adding data to data set
         values.add(new PieEntry((float) value));
         values.add(new PieEntry((float) range - value));
 
@@ -188,6 +187,7 @@ public class Co2Fragment extends Fragment {
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
+        // Changes color if the measured value is out of bounds
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
                                       , getContext().getColor(R.color.white)});
@@ -199,8 +199,9 @@ public class Co2Fragment extends Fragment {
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(0f);
         data.setValueTextColor(Color.WHITE);
+        // Sets data in the chart[
         mChartHumidity.setData(data);
-
+        // Informs the chart about changes and displays them
         mChartHumidity.invalidate();
     }
 
