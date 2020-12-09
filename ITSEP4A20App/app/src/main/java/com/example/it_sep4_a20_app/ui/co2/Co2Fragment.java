@@ -3,7 +3,6 @@ package com.example.it_sep4_a20_app.ui.co2;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.companion.WifiDeviceFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,7 +20,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -49,7 +47,7 @@ public class Co2Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_co2, container, false);
+        View root = inflater.inflate(R.layout.fragment_livereadings, container, false);
         mCo2Reading = root.findViewById(R.id.textView_co2Reading);
         mHumidityReading = root.findViewById(R.id.textView_humidityReading);
         mTemperatureReading = root.findViewById(R.id.textView_temperatureReading);

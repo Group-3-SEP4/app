@@ -6,17 +6,21 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/i_item_home"
             android:title="Home" />
+
+        <item
+            android:id="@+id/nav_liveReadings"
+            android:icon="@drawable/ic_baseline_local_pizza_24"
+            android:title="Live Readings" />
+
         <item
             android:id="@+id/nav_parameter"
             android:icon="@drawable/i_item_parameter"
             android:title="Parameter" />
-        <item
-            android:id="@+id/nav_co2"
-            android:icon="@drawable/i_item_co2"
-            android:title="CO2" />
+
         <item
             android:id="@+id/nav_settings"
-            android:title="Settings" />
+            android:title="Settings"
+            android:icon="@drawable/i_item_settings_black"/>
 
 
     </group>
