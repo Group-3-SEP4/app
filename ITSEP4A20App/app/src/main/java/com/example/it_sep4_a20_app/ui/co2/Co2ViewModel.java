@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
+import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 
 public class Co2ViewModel extends ViewModel {
@@ -14,8 +16,9 @@ public class Co2ViewModel extends ViewModel {
         this.mRepo = new ReadingsRepository();
     }
 
-    public LiveData<Double> getCO2()
-    {
-        return mRepo.getCO2();
+    public LiveData<LiveMeasurements> getLiveMeasurements(){
+        return mRepo.getLiveMeasurements();
     }
+
+
 }

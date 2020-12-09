@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textView_co2Reading" type="id" />
+    <item name="textView_temperatureReading" type="id" />
+    <item name="anychart_humidity" type="id" />
+    <item name="textView_humidityReading" type="id" />
+    <item name="anychart_temperature" type="id" />
+    <item name="anychart_co2" type="id" />
+</resources>
