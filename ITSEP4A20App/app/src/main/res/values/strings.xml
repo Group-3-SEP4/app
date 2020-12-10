@@ -2,7 +2,7 @@
     <string name="app_name">IT-SEP4-A20-App</string>
     <string name="menu_home">Home</string>
     <string name="menu_parameter">Parameters</string>
-    <string name="menu_co2">Co2</string>
+    <string name="menu_liveReadings">Live readings</string>
     <string name="navigationView">Navigation</string>
     <string name="nav_header_subtitle">Here goes subtitle /TODO change</string>
     <string name="action_settings">Settings</string>

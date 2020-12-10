@@ -5,11 +5,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -17,10 +15,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
-
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -39,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder
                 ( R.id.nav_home
-                , R.id.nav_co2
+                , R.id.nav_liveReadings
                 , R.id.nav_parameter
                 , R.id.nav_night_overview
                 , R.id.nav_settings)
