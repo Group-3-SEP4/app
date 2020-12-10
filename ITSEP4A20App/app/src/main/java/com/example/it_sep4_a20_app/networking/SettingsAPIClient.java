@@ -65,7 +65,7 @@ public class SettingsAPIClient implements ISettingsAPIClient
 
     @Override
     public void postSettings(Settings newSettings) {
-        Call<Settings> call = mApi.setSettings(newSettings);
+        Call<Settings> call = mApi.postSettings(newSettings);
         call.enqueue(new Callback<Settings>() {
             @Override
             public void onResponse(Call<Settings> call, Response<Settings> response) {
