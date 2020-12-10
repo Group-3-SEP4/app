@@ -8,5 +8,6 @@
         android:title="@string/title_editMinTemperature" />
     <Preference
         android:key="@string/key_resetTemperature"
-        android:title="@string/title_resetTemperature" />
+        android:title="@string/title_resetTemperature"
+        android:summary="@string/summary_reset_temperature"/>
 </PreferenceScreen>

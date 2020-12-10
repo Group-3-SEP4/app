@@ -1,10 +1,15 @@
 package com.example.it_sep4_a20_app.ui.preferences.co2preference;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -30,14 +35,14 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
 
         mViewModel = new ViewModelProvider(this).get(Co2PreferencesViewModel.class);
 
-        mViewModel.getSettings().observe(getViewLifecycleOwner(), new Observer<Settings>() {
-            @Override
-            public void onChanged(Settings settings) {
-                minCo2.setDefaultValue(settings.getPpmMin());
-                maxCo2.setDefaultValue(settings.getPpmMax());
-                minCo2.setSummary("Current minimum value is: " + settings.getPpmMin());
-                maxCo2.setSummary("Current maximum value is: " + settings.getPpmMax());
-            }
+        mViewModel.getSettings().observe(getViewLifecycleOwner(), settings ->
+        {
+            minCo2.setDefaultValue(settings.getPpmMin());
+            maxCo2.setDefaultValue(settings.getPpmMax());
+            minCo2.setSummary(getString(R.string.current_min_co2, settings.getPpmMin()));
+            maxCo2.setSummary(getString(R.string.current_max_co2, settings.getPpmMax()));
+            mViewModel.storeMinCo2Setting(settings.getPpmMin());
+            mViewModel.storeMaxCo2Setting(settings.getPpmMax());
         });
 
         //sets Co2 preferences to factory values
@@ -47,12 +52,20 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
         });
 
         minCo2.setOnPreferenceChangeListener((preference, newValue) -> {
-            mViewModel.setMINCO2((Integer.parseInt(newValue.toString())));
+            boolean valid = numberCheck(newValue);
+            if (valid)
+            {
+                mViewModel.setMINCO2((Integer.parseInt(newValue.toString())));
+            }
             return true;
         });
 
         maxCo2.setOnPreferenceChangeListener((preference, newValue) -> {
-            mViewModel.setMAXCO2((Integer.parseInt(newValue.toString())));
+            boolean valid = numberCheck(newValue);
+            if (valid)
+            {
+                mViewModel.setMAXCO2((Integer.parseInt(newValue.toString())));
+            }
             return true;
         });
 
@@ -62,5 +75,15 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences_co2, rootKey);
+    }
+
+    private boolean numberCheck(Object newValue) {
+        if( !newValue.toString().equals("")  &&  newValue.toString().matches("\\d*") ) {
+            return true;
+        }
+        else {
+            Toast.makeText(getContext(), getResources().getString(R.string.is_an_invalid_number), Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }
