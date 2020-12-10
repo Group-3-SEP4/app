@@ -11,7 +11,9 @@
             app:summary="Setup CO2 preferences"/>
         <Preference
             app:title="Humidity Preferences"
-            app:summary="Setup Humidity preferences"/>
+            app:summary="Setup Humidity preferences"
+            app:key="@string/key_preference_humidity"
+            android:summary="Setup humidity preferences"/>
         <Preference
             app:title="Temperature Preferences"
             app:summary="Setup Temperature preferences"
