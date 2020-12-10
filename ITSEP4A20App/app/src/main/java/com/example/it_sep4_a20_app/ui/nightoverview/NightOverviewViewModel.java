@@ -1,23 +1,49 @@
 package com.example.it_sep4_a20_app.ui.nightoverview;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
+import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
-public class NightOverviewViewModel extends ViewModel
+public class NightOverviewViewModel extends AndroidViewModel
 {
-    private ReadingsRepository mRepo;
+    private ReadingsRepository mReadingsRepo;
+    private SettingsRepository mSettingsRepo;
 
-    public NightOverviewViewModel()
+    public NightOverviewViewModel(Application application)
     {
-        mRepo = ReadingsRepository.getInstance();
+        super(application);
+        mReadingsRepo = ReadingsRepository.getInstance();
+        mSettingsRepo = SettingsRepository.getInstance(application);
     }
 
     public LiveData<NightOverview> getNightOverview()
     {
-        return mRepo.getNightOverview();
+        return mReadingsRepo.getNightOverview();
+    }
+
+    public boolean isPreferredCo2(double co2)
+    {
+        int min = mSettingsRepo.getMinCo2Setting();
+        int max = mSettingsRepo.getMaxCo2Setting();
+        return min <= co2 && max >= co2;
+    }
+
+    public boolean isPreferredTemperature(double temperature)
+    {
+        float min = mSettingsRepo.getMinTemperatureSetting();
+        float max = mSettingsRepo.getMaxTemperatureSetting();
+        return min <= temperature && max >= temperature;
+    }
+
+    public boolean isPreferredHumidity(double humidity)
+    {
+        int min = mSettingsRepo.getMinHumiditySetting();
+        int max = mSettingsRepo.getMaxHumiditySetting();
+        return min <= humidity && max >= humidity;
     }
 }

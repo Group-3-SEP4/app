@@ -74,34 +74,31 @@ public class NightOverviewFragment extends Fragment
             mHumiMax7days.setText(getResources().getString(R.string.text_co2_max, nightOverview.getHumiMax7days()));
             mHumiAvg7days.setText(getResources().getString(R.string.text_co2_avg, nightOverview.getHumiAvg7days()));
 
-            if(nightOverview.getTempAvg() > mPrefs.getFloat("max_temperature",40)
-            || nightOverview.getTempAvg() < mPrefs.getFloat("min_temperature", 10))
-            {
-                mTempImage.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
-            }
-            else
+            if(mViewModel.isPreferredTemperature(nightOverview.getTempAvg()))
             {
                 mTempImage.setImageResource(R.drawable.ic_baseline_check_box_24);
             }
-
-            if(nightOverview.getCo2Avg() > mPrefs.getFloat("max_co2",100)
-            || nightOverview.getCo2Avg() < mPrefs.getFloat("min_co2",0))
-            {
-                mCo2Image.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
-            }
             else
+            {
+                mTempImage.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+            }
+
+            if(mViewModel.isPreferredCo2(nightOverview.getCo2Avg()))
             {
                 mCo2Image.setImageResource(R.drawable.ic_baseline_check_box_24);
             }
-
-            if(nightOverview.getHumiAvg() > mPrefs.getFloat("max_humidity",100)
-            || nightOverview.getHumiAvg() < mPrefs.getFloat("min_humidity", 0))
+            else
             {
-                mHumiImage.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+                mCo2Image.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+            }
+
+            if(mViewModel.isPreferredHumidity(nightOverview.getHumiAvg()))
+            {
+                mHumiImage.setImageResource(R.drawable.ic_baseline_check_box_24);
             }
             else
             {
-                mHumiImage.setImageResource(R.drawable.ic_baseline_check_box_24);
+                mHumiImage.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
             }
         });
     }

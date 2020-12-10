@@ -33,7 +33,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPICLient
     @Override
     public void requestSettings()
     {
-
+        settingsMutableLiveData.setValue(settingsMutableLiveData.getValue());
     }
 
     @Override
