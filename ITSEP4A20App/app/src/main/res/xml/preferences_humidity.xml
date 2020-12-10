@@ -8,5 +8,6 @@
         android:title="@string/title_editMinHumidity" />
     <Preference
         android:key="@string/key_resetHumidity"
-        android:title="@string/title_resetHumidity" />
+        android:title="@string/title_resetHumidity"
+        android:summary="@string/summary_reset_humidity"/>
 </PreferenceScreen>
