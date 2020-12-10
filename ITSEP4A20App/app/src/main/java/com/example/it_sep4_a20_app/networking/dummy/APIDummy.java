@@ -10,10 +10,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.data.models.Settings;
-import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
 import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
+import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
 
-public class APIDummy implements ISettingsAPIClient, IReadingsAPICLient
+public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
 {
 
     private MutableLiveData<LiveMeasurements> liveMeasurementsMutableLiveData;
@@ -56,18 +56,6 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPICLient
 
     @Override
     public void requestMeasurements() {
-
-    }
-
-    @Override
-    public LiveData<Double> getCo2()
-    {
-        return null;
-    }
-
-    @Override
-    public void requestCO2()
-    {
 
     }
 
