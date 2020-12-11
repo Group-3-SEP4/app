@@ -15,24 +15,28 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.it_sep4_a20_app.R;
 
-public class TemperaturePreference extends PreferenceFragmentCompat
+public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
 {
     private TemperaturePreferenceViewModel mViewModel;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = super.onCreateView(inflater, container, savedInstanceState);
 
         EditTextPreference maxTemp = findPreference(getString(R.string.key_maxTemperature));
+        EditTextPreference minTemp = findPreference(getString(R.string.key_minTemperature));
         Preference resetMaxTemp = findPreference(getString(R.string.key_resetTemperature));
-
         mViewModel = new ViewModelProvider(this).get(TemperaturePreferenceViewModel.class);
+
+        minTemp.setSummary(getString(R.string.current_min_temperature, mViewModel.getStoredMinTemperatureSetting()));
+        maxTemp.setSummary(getString(R.string.current_max_temperature, mViewModel.getStoredMaxTemperatureSetting()));
+
 
         mViewModel.getSettings().observe(getViewLifecycleOwner(), settings ->
         {
             maxTemp.setDefaultValue(settings.getTemperatureSetPoint());
             maxTemp.setSummary(getString(R.string.current_max_temperature, settings.getTemperatureSetPoint()));
+            mViewModel.storeMaxTemperatureSetting((float)settings.getTemperatureSetPoint());
         });
 
         resetMaxTemp.setOnPreferenceClickListener(preference -> {
@@ -43,7 +47,21 @@ public class TemperaturePreference extends PreferenceFragmentCompat
         maxTemp.setOnPreferenceChangeListener((preference, newValue) -> {
             boolean valid = numberCheck(newValue);
             if(valid)
-            mViewModel.setMaxTemp((Integer.parseInt(newValue.toString())));
+            {
+                mViewModel.setMaxTemp((Integer.parseInt(newValue.toString())));
+            }
+            return valid;
+        });
+
+        minTemp.setOnPreferenceChangeListener((preference, newValue) ->
+        {
+            boolean valid = numberCheck(newValue);
+            if(valid)
+            {
+                mViewModel.storeMinTemperatureSetting(Float.parseFloat(newValue.toString()));
+                minTemp.setSummary(getString(R.string.current_min_temperature, Float.parseFloat(newValue.toString())));
+            }
+
             return valid;
         });
         return root;

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
+import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
 
 import retrofit2.Call;
@@ -17,16 +18,16 @@ public class ReadingsAPIClient implements IReadingsAPIClient
 {
     private static ReadingsAPIClient mInstance;
     private SleepTrackerAPI mApi;
+    private MutableLiveData<NightOverview> mNightOverview;
     private MutableLiveData<LiveMeasurements> mLiveMeasurement;
-
+    private static final String TAG = "ReadingsAPIClient";
     //Temporary deviceEui
     private final String mTempDeviceEui = "0004A30B00219CAC";
-    //TAG for log reports
-    private static final String TAG = "ReadingsAPIClient";
 
     private ReadingsAPIClient() {
         this.mApi = ServiceGenerator.getAPI();
         mLiveMeasurement = new MutableLiveData<>();
+        mNightOverview = new MutableLiveData<>();
     }
 
     public static ReadingsAPIClient getInstance()
@@ -67,5 +68,11 @@ public class ReadingsAPIClient implements IReadingsAPIClient
                 Log.i(TAG, t.toString());
             }
         });
+    }
+
+    @Override
+    public LiveData<NightOverview> NightOverview()
+    {
+        return null;
     }
 }

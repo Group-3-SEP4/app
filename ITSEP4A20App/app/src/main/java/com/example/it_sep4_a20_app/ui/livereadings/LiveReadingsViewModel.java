@@ -11,7 +11,7 @@ public class LiveReadingsViewModel extends ViewModel {
     private ReadingsRepository mRepo;
 
     public LiveReadingsViewModel() {
-        this.mRepo = new ReadingsRepository();
+        this.mRepo = ReadingsRepository.getInstance();
     }
 
     public LiveData<LiveMeasurements> getLiveMeasurements(){

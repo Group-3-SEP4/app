@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity
                 ( R.id.nav_home
                 , R.id.nav_liveReadings
                 , R.id.nav_parameter
+                , R.id.nav_night_overview
                 , R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
