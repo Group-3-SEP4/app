@@ -37,7 +37,7 @@ public class SettingsRepository
         }
         return instance;
     }
-
+    //TODO Consider Mediator live data
     public LiveData<Settings> getSettings()
     {
         Log.i(TAG, "Calling request settings...");
@@ -51,14 +51,9 @@ public class SettingsRepository
         mApiClient.postSettings(settings);
     }
 
-    public void storeMinTemperatureSetting(float min)
+    public void storeTemperatureSetPoint(float max)
     {
-        mPreferences.edit().putFloat("min_temperature",min).apply();
-    }
-
-    public void storeMaxTemperatureSetting(float max)
-    {
-        mPreferences.edit().putFloat("max_temperature",max).apply();
+        mPreferences.edit().putFloat("setpoint_temperature",max).apply();
     }
 
     public void storeMinCo2Setting(int min)
@@ -81,14 +76,9 @@ public class SettingsRepository
         mPreferences.edit().putInt("max_humidity",max).apply();
     }
 
-    public float getMinTemperatureSetting()
+    public float getTemperatureSetPoint()
     {
-        return mPreferences.getFloat("min_temperature",0);
-    }
-
-    public float getMaxTemperatureSetting()
-    {
-        return mPreferences.getFloat("max_temperature",0);
+        return mPreferences.getFloat("setpoint_temperature",0);
     }
 
     public int getMaxCo2Setting()

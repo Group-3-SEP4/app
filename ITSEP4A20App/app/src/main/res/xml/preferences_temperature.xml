@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
-        android:key="@string/key_maxTemperature"
-        android:title="@string/title_editMaxTemperature" />
-    <EditTextPreference
-        android:key="@string/key_minTemperature"
-        android:title="@string/title_editMinTemperature" />
+        android:key="@string/key_temperatureSetPoint"
+        android:title="@string/title_editTemperatureSetPoint" />
     <Preference
         android:key="@string/key_resetTemperature"
         android:title="@string/title_resetTemperature"

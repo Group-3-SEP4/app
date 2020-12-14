@@ -17,9 +17,9 @@
     <string name="summary_resetCo2">Reset MIN and MAX Co2 levels to recommended</string>
     <string name="key_preference_co2">co2_preferences</string>
     <string name="summary_resetTemperature">Reset MIN and MAX temperature to recommended</string>
-    <string name="current_max_temperature">Current max temperature %1$.1f C</string>
-    <string name="title_editMaxTemperature">Edit maximum temperature</string>
-    <string name="key_maxTemperature">maxTemperature</string>
+    <string name="current_max_temperature">Current temperature setpoint %1$.1f C</string>
+    <string name="title_editTemperatureSetPoint">Edit temperature setpoint</string>
+    <string name="key_temperatureSetPoint">maxTemperature</string>
     <string name="key_resetTemperature">resetTemperature</string>
     <string name="title_resetTemperature">Reset temperature</string>
     <string name="is_an_invalid_number">Input must be a number</string>
@@ -54,8 +54,12 @@
     <string name="current_min_co2">Current minimum value is: %1$d ppm</string>
     <string name="current_max_co2">Current maximum value is: %1$d ppm</string>
     <string name="summary_reset_humidity">Reset humidity to recommended</string>
+<<<<<<< HEAD
     <string name="summary_reset_temperature">Reset temperature to recommended</string>
     <string name="co2_current_reading">Current CO2:</string>
     <string name="current_temperature">Current temperature:</string>
     <string name="current_humidity">Current humidity:</string>
+=======
+    <string name="summary_reset_temperature">Reset temperature setpoint to recommended</string>
+>>>>>>> develop
 </resources>

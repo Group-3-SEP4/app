@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
-import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
+import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
 import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
 
@@ -73,6 +73,12 @@ public class ReadingsAPIClient implements IReadingsAPIClient
 
     @Override
     public LiveData<NightOverview> NightOverview()
+    {
+        return null;
+    }
+
+    @Override
+    public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
         return null;
     }

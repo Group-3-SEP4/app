@@ -35,9 +35,8 @@ public class NightOverviewViewModel extends AndroidViewModel
 
     public boolean isPreferredTemperature(double temperature)
     {
-        float min = mSettingsRepo.getMinTemperatureSetting();
-        float max = mSettingsRepo.getMaxTemperatureSetting();
-        return min <= temperature && max >= temperature;
+        float setPoint = mSettingsRepo.getTemperatureSetPoint();
+        return setPoint >= temperature && !(setPoint - 4 < temperature);
     }
 
     public boolean isPreferredHumidity(double humidity)
