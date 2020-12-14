@@ -44,14 +44,4 @@ public class Co2PreferencesViewModel extends AndroidViewModel
         temp.setPpmMin(MINCO2);
         mRepo.setSettings(temp);
     }
-
-    public void storeMinCo2Setting(int min)
-    {
-        mRepo.storeMinCo2Setting(min);
-    }
-
-    public void storeMaxCo2Setting(int max)
-    {
-        mRepo.storeMaxCo2Setting(max);
-    }
 }

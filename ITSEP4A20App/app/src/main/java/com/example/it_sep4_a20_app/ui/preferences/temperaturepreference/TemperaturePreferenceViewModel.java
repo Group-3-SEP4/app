@@ -36,11 +36,6 @@ public class TemperaturePreferenceViewModel extends AndroidViewModel
         setTemperatureSetPoint(TEMPERATURESETPOINT);
     }
 
-    public void storeTemperatureSetPoint(float max)
-    {
-        mRepo.storeTemperatureSetPoint(max);
-    }
-
     public float getStoredTemperatureSetPoint()
     {
         return mRepo.getTemperatureSetPoint();

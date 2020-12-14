@@ -27,6 +27,12 @@ public class SettingsRepository
     {
         mApiClient = new APIDummy();
         mPreferences = application.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        mApiClient.getSettings().observeForever(settings ->
+        {
+            storeMaxCo2Setting(settings.getPpmMax());
+            storeMinCo2Setting(settings.getPpmMin());
+            storeTemperatureSetPoint((float) settings.getTemperatureSetPoint());
+        });
     }
 
     public static SettingsRepository getInstance(Application application)
@@ -37,7 +43,7 @@ public class SettingsRepository
         }
         return instance;
     }
-    //TODO Consider Mediator live data
+
     public LiveData<Settings> getSettings()
     {
         Log.i(TAG, "Calling request settings...");

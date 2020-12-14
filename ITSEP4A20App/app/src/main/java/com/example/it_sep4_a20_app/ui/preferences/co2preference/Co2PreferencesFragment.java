@@ -41,8 +41,6 @@ public class Co2PreferencesFragment extends PreferenceFragmentCompat {
             maxCo2.setDefaultValue(settings.getPpmMax());
             minCo2.setSummary(getString(R.string.current_min_co2, settings.getPpmMin()));
             maxCo2.setSummary(getString(R.string.current_max_co2, settings.getPpmMax()));
-            mViewModel.storeMinCo2Setting(settings.getPpmMin());
-            mViewModel.storeMaxCo2Setting(settings.getPpmMax());
         });
 
         //sets Co2 preferences to factory values

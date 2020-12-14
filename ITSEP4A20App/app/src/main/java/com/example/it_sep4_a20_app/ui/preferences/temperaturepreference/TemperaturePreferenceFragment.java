@@ -34,7 +34,6 @@ public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
         {
             tempSetPoint.setDefaultValue(settings.getTemperatureSetPoint());
             tempSetPoint.setSummary(getString(R.string.current_max_temperature, settings.getTemperatureSetPoint()));
-            mViewModel.storeTemperatureSetPoint((float)settings.getTemperatureSetPoint());
         });
 
         resetTemperature.setOnPreferenceClickListener(preference -> {
