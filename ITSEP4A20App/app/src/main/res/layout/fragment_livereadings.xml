@@ -1,208 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
     >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/linear_layout_live_readings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
         android:background="@color/white"
-        tools:context=".ui.livereadings.LiveReadingsFragment">
+        android:orientation="vertical">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_co2"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart_co2"
-            android:layout_width="180dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout_co2Graph"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart_co2"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.89"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_co2_reading"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/view_border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="0 ppm"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_co2_live_reading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_currentCo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/co2_current_reading"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/textView_co2max"
+                    android:layout_width="180dp"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/current_max_co2"/>
+
+                <TextView
+                    android:id="@+id/textView_co2min"
+                    android:layout_width="180dp"
+                    android:layout_height="42dp"
+                    android:text="@string/current_min_co2"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_temperature"
+            android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.89"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="16dp"
+           >
 
-        <TextView
-            android:id="@+id/textView_co2Reading"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/view_border"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="0 ppm"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout_temperature_live_readings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart_temperature"
-            android:layout_width="180dp"
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart_temperature"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_temperature_reading"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/view_border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="0 °C"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_temperature_live_readings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_currentTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/current_temperature"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/textView_temperature_point"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="180dp"
+                    android:layout_height="42dp"
+                    android:text="@string/current_max_temperature"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_humidity"
+            android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.89"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chart_co2" />
+            android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/textView_temperatureReading"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/view_border"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="0 °C"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_co2Reading" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout_humidity_live_readings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart_humidity"
-            android:layout_width="180dp"
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart_humidity"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_humidity_reading"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/view_border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="0 %"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_humidity_live_readings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView_current_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/current_humidity"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/textView_humidity_max"
+                    android:layout_width="140dp"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/current_max_humidity"/>
+
+                <TextView
+                    android:id="@+id/textView_humidity_min"
+                    android:layout_width="140dp"
+                    android:layout_height="42dp"
+                    android:text="@string/current_min_humidity"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_servo_live_readings"
+            android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.89"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chart_temperature" />
+            android:layout_marginTop="16dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout_servo_live_readings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart_servo"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.891"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/textView_humidityReading"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/view_border"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="0 %"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_temperatureReading" />
+                <TextView
+                    android:id="@+id/textView_current_servo_position"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/view_border"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="0 %"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout_servo_live_readings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView_current_servo_reading"
+                    android:layout_width="180dp"
+                    android:layout_height="42dp"
+                    android:text="Current servo position:"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="12dp"/>
+                <TextView
+                    android:id="@+id/textView_windowPosition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="Open/Close"/>
 
-        <TextView
-            android:id="@+id/textView_currentCo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="76dp"
-            android:text="@string/co2_current_reading"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView_co2Reading"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_co2max"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/current_max_co2"
-            app:layout_constraintEnd_toStartOf="@+id/chart_co2"
-            app:layout_constraintTop_toBottomOf="@+id/textView_currentCo2" />
-
-        <TextView
-            android:id="@+id/textView_co2min"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/current_min_co2"
-            app:layout_constraintEnd_toStartOf="@+id/chart_co2"
-            app:layout_constraintTop_toBottomOf="@+id/textView_co2max" />
-
-        <TextView
-            android:id="@+id/textView_currentTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/current_temperature"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView_temperatureReading"
-            app:layout_constraintTop_toBottomOf="@+id/textView_co2min" />
-
-        <TextView
-            android:id="@+id/textView_temperaturemax"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/current_max_temperature"
-            app:layout_constraintEnd_toStartOf="@+id/chart_temperature"
-            app:layout_constraintHorizontal_bias="0.714"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_currentTemperature" />
-
-        <TextView
-            android:id="@+id/textView_temperaturemin"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/current_min_temperature"
-            app:layout_constraintEnd_toStartOf="@+id/chart_temperature"
-            app:layout_constraintHorizontal_bias="0.714"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_temperaturemax" />
-
-        <TextView
-            android:id="@+id/textView_currentHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="58dp"
-            android:layout_marginEnd="44dp"
-            android:text="@string/current_humidity"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView_humidityReading"
-            app:layout_constraintTop_toBottomOf="@+id/textView_temperaturemin" />
-
-        <TextView
-            android:id="@+id/textView_humiditymax"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/current_max_humidity"
-            app:layout_constraintEnd_toStartOf="@+id/chart_humidity"
-            app:layout_constraintHorizontal_bias="0.714"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_currentHumidity" />
-
-        <TextView
-            android:id="@+id/textView_humiditymin"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/current_min_humidity"
-            app:layout_constraintEnd_toStartOf="@+id/chart_humidity"
-            app:layout_constraintHorizontal_bias="0.714"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_humiditymax" />
-
-        <com.github.mikephil.charting.charts.PieChart
-
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="616dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </com.github.mikephil.charting.charts.PieChart>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textView_servo_position"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:text="@string/current_servo_position" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 </ScrollView>

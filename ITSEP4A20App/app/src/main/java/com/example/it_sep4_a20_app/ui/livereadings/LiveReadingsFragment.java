@@ -3,7 +3,6 @@ package com.example.it_sep4_a20_app.ui.livereadings;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,7 +20,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-
 import java.util.ArrayList;
 
 public class LiveReadingsFragment extends Fragment {
@@ -31,14 +29,26 @@ public class LiveReadingsFragment extends Fragment {
     private TextView mCo2Reading;
     private TextView mTemperatureReading;
     private TextView mHumidityReading;
+    private TextView mServoReading;
+
+    private TextView mCo2Max;
+    private TextView mCo2Min;
+    private TextView mTemperatureSetPoint;
+    private TextView mHumidityMax;
+    private TextView mHumidityMin;
+    private TextView mWindowState;
+    private TextView mServoPosition;
     //Pie charts
+
     private PieChart mChartCo2;
     private PieChart mChartTemperature;
     private PieChart mChartHumidity;
-    //Max values for suitable living situation
-    private final int MAX_CO2 = 1000;
-    private final int MAX_TEMPERATURE = 40;
-    private final int MAX_HUMIDITY = 100;
+    private PieChart mChartServo;
+
+    //Max value for servo from 0-100%
+    private final int MAX_SERVO_POSITION = 100;
+
+
 
     public static LiveReadingsFragment newInstance() {
         return new LiveReadingsFragment();
@@ -50,14 +60,27 @@ public class LiveReadingsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_livereadings, container, false);
 
-        mCo2Reading = root.findViewById(R.id.textView_co2Reading);
-        mHumidityReading = root.findViewById(R.id.textView_humidityReading);
-        mTemperatureReading = root.findViewById(R.id.textView_temperatureReading);
+        mCo2Reading = root.findViewById(R.id.textView_co2_reading);
+        mTemperatureReading = root.findViewById(R.id.textView_temperature_reading);
+        mHumidityReading = root.findViewById(R.id.textView_humidity_reading);
+        mServoReading = root.findViewById(R.id.textView_current_servo_position);
+        mCo2Max = root.findViewById(R.id.textView_co2max);
+        mCo2Min = root.findViewById(R.id.textView_co2min);
+        mTemperatureSetPoint = root.findViewById(R.id.textView_temperature_point);
+        mHumidityMax = root.findViewById(R.id.textView_humidity_max);
+        mHumidityMin = root.findViewById(R.id.textView_humidity_min);
+        mWindowState = root.findViewById(R.id.textView_windowPosition);
+        mServoPosition = root.findViewById(R.id.textView_servo_position);
+
+        mChartServo = root.findViewById(R.id.chart_servo);
+        initCharts(mChartServo, root);
 
         mChartCo2 = root.findViewById(R.id.chart_co2);
         initCharts(mChartCo2, root);
+
         mChartTemperature = root.findViewById(R.id.chart_temperature);
         initCharts(mChartTemperature, root);
+
         mChartHumidity = root.findViewById(R.id.chart_humidity);
         initCharts(mChartHumidity, root);
 
@@ -75,66 +98,55 @@ public class LiveReadingsFragment extends Fragment {
                 int co2 = liveMeasurements.getCarbonDioxide();
                 double temperature = liveMeasurements.getTemperature();
                 int humidity = liveMeasurements.getHumidityPercentage();
+                int servo = liveMeasurements.getServoPositionPercentage();
 
                 // Putting it in to strings or textView
                 String co2Reading = co2 + " ppm";
                 String temperatureReading = temperature + " °C";
                 String humidityReading = humidity + " %";
+                String servoReading = servo + " %";
+
+                //Getting max and min values
+                int maxCo2 = mViewModel.getMaxCo2();
+                int minCo2 = mViewModel.getMinCo2();
+                double temperatureSetPoint = mViewModel.getTemperatureSetPoint();
+                int maxHumidity = mViewModel.getMaxHumidity();
+                int minHumidity = mViewModel.getMinHumidity();
 
                 // Setting graphs
-                setDataCo2(2, MAX_CO2, co2);
-                setDataTemperature(2, MAX_TEMPERATURE, temperature);
-                setDataHumidity(2, MAX_HUMIDITY, humidity);
+                setChartData(2, maxCo2, co2, mChartCo2);
+                setChartData(2, (float) temperatureSetPoint, temperature, mChartTemperature);
+                setChartData(2, maxHumidity, humidity, mChartHumidity);
+                setChartData(2, MAX_SERVO_POSITION, servo, mChartServo);
 
                 // Setting textViews
                 mCo2Reading.setText(co2Reading);
                 mHumidityReading.setText(humidityReading);
                 mTemperatureReading.setText(temperatureReading);
+                mServoReading.setText(servoReading);
+                mCo2Max.setText(getString(R.string.current_max_co2, maxCo2));
+                mCo2Min.setText(getString(R.string.current_min_co2, minCo2));
+                mTemperatureSetPoint.setText(getString(R.string.current_temperature_setpoint,(float) temperatureSetPoint));
+                mHumidityMax.setText(getString(R.string.current_max_humidity, maxHumidity));
+                mHumidityMin.setText(getString(R.string.current_min_humidity, minHumidity));
+                if (servo == 0) {
+                    mWindowState.setText(getString(R.string.current_window_state_closed));
+                } else
+                    mWindowState.setText(getString(R.string.current_window_state_open));
+                mServoPosition.setText(getString(R.string.current_servo_position, servo));
             }
         });
     }
 
     private void initCharts(PieChart chart, View root) {
-        chart.setMaxAngle(270f);
+        chart.setMaxAngle(270f); //displays 270° of the chart
         chart.animateY(1400, Easing.EaseInOutQuad);
         chart.setTouchEnabled(false); // Disables graph intractability
         chart.getLegend().setEnabled(false); // Disables legend
         chart.getDescription().setEnabled(false); // Disables description
     }
 
-    private void setDataCo2(int count, float range, int value) {
-        ArrayList<PieEntry> values = new ArrayList<>();
-        // Changes value of measured value to range to not overflow when making a graph
-        if (range < value) {
-            float temp = range;
-            value =(int) temp;
-        }
-        // Adding data to data set
-        values.add(new PieEntry((float) value));
-        values.add(new PieEntry((float) range - value));
-
-        PieDataSet dataSet = new PieDataSet(values, "Co2 live reading");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-        // Changes color if the measured value is out of bounds
-        if (value<range){
-            dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
-                    , getContext().getColor(R.color.white)});
-        } else {
-            dataSet.setColor(getContext().getColor(R.color.red_warning_900), 200);
-        }
-
-        PieData data = new PieData(dataSet);
-        data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(0f);
-        data.setValueTextColor(Color.WHITE);
-        // Sets data in the chart
-        mChartCo2.setData(data);
-        // Informs the chart about changes and displays them
-        mChartCo2.invalidate();
-    }
-
-    private void setDataTemperature(int count, float range, double value) {
+    private void setChartData(int count, float range, double value, PieChart chart) {
         ArrayList<PieEntry> values = new ArrayList<>();
         // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
@@ -145,16 +157,25 @@ public class LiveReadingsFragment extends Fragment {
         values.add(new PieEntry ((float) value));
         values.add(new PieEntry ((float) range - ((float) value)));
 
-        PieDataSet dataSet = new PieDataSet(values, "Temperature live reading");
+        String temp = "";
+        if (chart==mChartCo2) {
+            temp = "Co2";
+        } else if(chart==mChartTemperature) {
+            temp = "Temperature";
+        } else if (chart==mChartHumidity) {
+            temp = "Humidity";
+        }
+
+        PieDataSet dataSet = new PieDataSet(values, temp + " live reading");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
         // Changes color if the measured value is out of bounds
         if (value<range){
             dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
-                                      , getContext().getColor(R.color.white)});
+                    , getContext().getColor(R.color.white)});
         } else {
-            dataSet.setColor(getContext().getColor(R.color.red_warning_900), 200);
+            dataSet.setColor(getContext().getColor(R.color.red_warning_900),200);
         }
 
         PieData data = new PieData(dataSet);
@@ -162,44 +183,8 @@ public class LiveReadingsFragment extends Fragment {
         data.setValueTextSize(0f);
         data.setValueTextColor(Color.WHITE);
         // Sets data in the chart
-        mChartTemperature.setData(data);
+        chart.setData(data);
         // Informs the chart about changes and displays them
-        mChartTemperature.invalidate();
+        chart.invalidate();
     }
-
-    private void setDataHumidity(int count, float range, int value) {
-        ArrayList<PieEntry> values = new ArrayList<>();
-        // Changes value of measured value to range to not overflow when making a graph
-        if (range < value) {
-            float temp = range;
-            value =(int) temp;
-        }
-        // Adding data to data set
-        values.add(new PieEntry((float) value));
-        values.add(new PieEntry((float) range - value));
-
-        PieDataSet dataSet = new PieDataSet(values, "Humidity live reading");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-
-        // Changes color if the measured value is out of bounds
-        if (value<range){
-            dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
-                                      , getContext().getColor(R.color.white)});
-        } else {
-            dataSet.setColor(getContext().getColor(R.color.red_warning_900), 200);
-        }
-
-        PieData data = new PieData(dataSet);
-        data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(0f);
-        data.setValueTextColor(Color.WHITE);
-        // Sets data in the chart[
-        mChartHumidity.setData(data);
-        // Informs the chart about changes and displays them
-        mChartHumidity.invalidate();
-    }
-
-
-
 }
