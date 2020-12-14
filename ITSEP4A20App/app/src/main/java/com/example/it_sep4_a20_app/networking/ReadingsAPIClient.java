@@ -15,6 +15,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class ReadingsAPIClient implements IReadingsAPIClient
 {
     private static ReadingsAPIClient mInstance;
@@ -72,7 +75,7 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     }
 
     @Override
-    public LiveData<NightOverview> NightOverview()
+    public LiveData<NightOverview> getNightOverview()
     {
         return null;
     }

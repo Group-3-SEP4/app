@@ -4,7 +4,9 @@ import com.example.it_sep4_a20_app.networking.SleepTrackerAPI;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class ServiceGenerator {
     private static SleepTrackerAPI mApi;
     public static SleepTrackerAPI getAPI() {

@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/i_item_home"
-            android:title="Home" />
-
         <item
             android:id="@+id/nav_liveReadings"
             android:icon="@drawable/ic_baseline_local_pizza_24"
             android:title="Live Readings" />
-
-        <item
-            android:id="@+id/nav_parameter"
-            android:icon="@drawable/i_item_parameter"
-            android:title="Parameter" />
 
         <item
             android:id="@+id/nav_night_overview"
@@ -26,13 +15,10 @@
             android:id="@+id/nav_detailed_readings"
             android:icon="@drawable/ic_baseline_fact_check_24"
             android:title="Detailed Readings" />
+
         <item
             android:id="@+id/nav_settings"
             android:title="Settings"
             android:icon="@drawable/i_item_settings_black"/>
-
-
     </group>
-
-
 </menu>

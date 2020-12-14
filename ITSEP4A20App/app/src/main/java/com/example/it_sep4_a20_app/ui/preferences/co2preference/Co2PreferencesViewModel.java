@@ -7,13 +7,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 import com.example.it_sep4_a20_app.data.models.Settings;
-
+import com.example.it_sep4_a20_app.util.Constants;
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class Co2PreferencesViewModel extends AndroidViewModel
 {
 
     private SettingsRepository mRepo;
-    private final int MAXCO2 = 1500;
-    private final int MINCO2 = 200;
+
 
     public Co2PreferencesViewModel(Application application) {
         super(application);
@@ -40,18 +42,8 @@ public class Co2PreferencesViewModel extends AndroidViewModel
         Settings temp = mRepo.getSettings().getValue();
         if(temp == null)
             return;
-        temp.setPpmMax(MAXCO2);
-        temp.setPpmMin(MINCO2);
+        temp.setPpmMax(Constants.MAXCO2);
+        temp.setPpmMin(Constants.MINCO2);
         mRepo.setSettings(temp);
-    }
-
-    public void storeMinCo2Setting(int min)
-    {
-        mRepo.storeMinCo2Setting(min);
-    }
-
-    public void storeMaxCo2Setting(int max)
-    {
-        mRepo.storeMaxCo2Setting(max);
     }
 }

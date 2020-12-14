@@ -12,6 +12,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class SettingsAPIClient implements ISettingsAPIClient
 {
     private static final String TAG = "SettingsAPIClient";

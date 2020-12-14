@@ -11,6 +11,9 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public interface SleepTrackerAPI
 {
         //TODO add deviceEui as querry

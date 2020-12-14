@@ -14,7 +14,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.it_sep4_a20_app.R;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
 {
     private TemperaturePreferenceViewModel mViewModel;
@@ -34,7 +36,6 @@ public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
         {
             tempSetPoint.setDefaultValue(settings.getTemperatureSetPoint());
             tempSetPoint.setSummary(getString(R.string.current_max_temperature, settings.getTemperatureSetPoint()));
-            mViewModel.storeTemperatureSetPoint((float)settings.getTemperatureSetPoint());
         });
 
         resetTemperature.setOnPreferenceClickListener(preference -> {
@@ -46,7 +47,7 @@ public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
             boolean valid = numberCheck(newValue);
             if(valid)
             {
-                mViewModel.setTemperatureSetPoint((Integer.parseInt(newValue.toString())));
+                mViewModel.setTemperatureSetPoint((Double.parseDouble(newValue.toString())));
             }
             return valid;
         });

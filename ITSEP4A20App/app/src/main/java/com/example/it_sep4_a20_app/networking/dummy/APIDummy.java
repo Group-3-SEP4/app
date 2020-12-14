@@ -68,7 +68,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     }
 
     @Override
-    public LiveData<NightOverview> NightOverview()
+    public LiveData<NightOverview> getNightOverview()
     {
         MutableLiveData<NightOverview> data = new MutableLiveData<>();
         data.setValue(new NightOverview());

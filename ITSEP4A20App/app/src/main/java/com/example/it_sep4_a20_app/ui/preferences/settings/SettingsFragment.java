@@ -6,7 +6,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.it_sep4_a20_app.R;
-
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class SettingsFragment extends PreferenceFragmentCompat
 {
     @Override

@@ -13,7 +13,10 @@ import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
 import com.example.it_sep4_a20_app.networking.SettingsAPIClient;
 import com.example.it_sep4_a20_app.data.models.Settings;
 import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
-
+import com.example.it_sep4_a20_app.util.Constants;
+/**
+ * @author Tobias Sønderbo
+ */
 public class SettingsRepository
 {
     private static SettingsRepository instance;
@@ -27,6 +30,12 @@ public class SettingsRepository
     {
         mApiClient = new APIDummy();
         mPreferences = application.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        mApiClient.getSettings().observeForever(settings ->
+        {
+            storeMaxCo2Setting(settings.getPpmMax());
+            storeMinCo2Setting(settings.getPpmMin());
+            storeTemperatureSetPoint((float) settings.getTemperatureSetPoint());
+        });
     }
 
     public static SettingsRepository getInstance(Application application)
@@ -37,7 +46,7 @@ public class SettingsRepository
         }
         return instance;
     }
-    //TODO Consider Mediator live data
+
     public LiveData<Settings> getSettings()
     {
         Log.i(TAG, "Calling request settings...");
@@ -78,26 +87,26 @@ public class SettingsRepository
 
     public float getTemperatureSetPoint()
     {
-        return mPreferences.getFloat("setpoint_temperature",0);
+        return mPreferences.getFloat("setpoint_temperature", Constants.TEMPERATURESETPOINT);
     }
 
     public int getMaxCo2Setting()
     {
-        return mPreferences.getInt("max_co2",0);
+        return mPreferences.getInt("max_co2",Constants.MAXCO2);
     }
 
     public int getMinCo2Setting()
     {
-        return mPreferences.getInt("min_co2",0);
+        return mPreferences.getInt("min_co2",Constants.MINCO2);
     }
 
     public int getMaxHumiditySetting()
     {
-        return mPreferences.getInt("max_humidity",0);
+        return mPreferences.getInt("max_humidity",Constants.MAXHUMIDITY);
     }
 
     public int getMinHumiditySetting()
     {
-        return mPreferences.getInt("min_humidity",0);
+        return mPreferences.getInt("min_humidity",Constants.MINHUMIDITY);
     }
 }

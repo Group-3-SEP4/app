@@ -8,11 +8,13 @@ import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
-
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public interface IReadingsAPIClient
 {
     LiveData<LiveMeasurements> getLiveMeasurements();
     void requestMeasurements();
-    LiveData<NightOverview> NightOverview();
+    LiveData<NightOverview> getNightOverview();
     LiveData<DetailedMeasurements> getDetailedMeasurements();
 }

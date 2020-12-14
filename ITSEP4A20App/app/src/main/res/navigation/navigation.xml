@@ -3,25 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.it_sep4_a20_app.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/nav_liveReadings">
 
     <fragment
         android:id="@+id/nav_liveReadings"
         android:name="com.example.it_sep4_a20_app.ui.livereadings.LiveReadingsFragment"
         android:label="@string/menu_liveReadings"
         tools:layout="@layout/fragment_livereadings" />
-
-    <fragment
-        android:id="@+id/nav_parameter"
-        android:name="com.example.it_sep4_a20_app.ui.parameter.ParameterFragment"
-        android:label="@string/menu_parameter"
-        tools:layout="@layout/fragment_parameter" />
 
     <fragment
         android:id="@+id/nav_settings"
@@ -38,7 +26,7 @@
     <fragment
         android:id="@+id/nav_temp_preferences"
         android:name="com.example.it_sep4_a20_app.ui.preferences.temperaturepreference.TemperaturePreferenceFragment"
-        android:label="CO2 Preferences"
+        android:label="Temperature Preferences"
         />
 
     <fragment

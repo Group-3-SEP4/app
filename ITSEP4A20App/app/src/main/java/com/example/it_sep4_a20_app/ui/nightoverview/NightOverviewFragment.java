@@ -15,7 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.it_sep4_a20_app.R;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class NightOverviewFragment extends Fragment
 {
 
