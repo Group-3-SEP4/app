@@ -45,7 +45,7 @@ public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
             boolean valid = numberCheck(newValue);
             if(valid)
             {
-                mViewModel.setTemperatureSetPoint((Integer.parseInt(newValue.toString())));
+                mViewModel.setTemperatureSetPoint((Double.parseDouble(newValue.toString())));
             }
             return valid;
         });

@@ -6,12 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
+import com.example.it_sep4_a20_app.util.Constants;
 
 public class HumidityPreferenceViewModel extends AndroidViewModel
 {
     private SettingsRepository mRepo;
-    private final int MINHUMIDITY = 1;
-    private final int MAXHUMIDITY = 99;
+
 
     public HumidityPreferenceViewModel(@NonNull Application application)
     {
@@ -31,8 +31,8 @@ public class HumidityPreferenceViewModel extends AndroidViewModel
 
     public void resetHumiditySettings()
     {
-        mRepo.storeMinHumiditySetting(MINHUMIDITY);
-        mRepo.storeMaxHumiditySetting(MAXHUMIDITY);
+        mRepo.storeMinHumiditySetting(Constants.MINHUMIDITY);
+        mRepo.storeMaxHumiditySetting(Constants.MAXHUMIDITY);
     }
 
     public int getStoredMaxHumiditySetting()

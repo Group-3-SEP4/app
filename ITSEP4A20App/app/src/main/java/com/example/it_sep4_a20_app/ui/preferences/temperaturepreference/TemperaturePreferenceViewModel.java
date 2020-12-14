@@ -7,11 +7,11 @@ import androidx.lifecycle.LiveData;
 
 import com.example.it_sep4_a20_app.data.models.Settings;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
+import com.example.it_sep4_a20_app.util.Constants;
 
 public class TemperaturePreferenceViewModel extends AndroidViewModel
 {
     private SettingsRepository mRepo;
-    private final float TEMPERATURESETPOINT = 20.0f;
 
     public TemperaturePreferenceViewModel(Application application)
     {
@@ -33,7 +33,7 @@ public class TemperaturePreferenceViewModel extends AndroidViewModel
 
     public void resetMaxTemp()
     {
-        setTemperatureSetPoint(TEMPERATURESETPOINT);
+        setTemperatureSetPoint(Constants.TEMPERATURESETPOINT);
     }
 
     public float getStoredTemperatureSetPoint()
