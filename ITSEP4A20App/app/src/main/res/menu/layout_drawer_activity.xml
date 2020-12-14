@@ -21,6 +21,11 @@
             android:id="@+id/nav_night_overview"
             android:icon="@drawable/ic_baseline_article_24"
             android:title="Night Overview"/>
+
+        <item
+            android:id="@+id/nav_detailed_readings"
+            android:icon="@drawable/ic_baseline_fact_check_24"
+            android:title="Detailed Readings" />
         <item
             android:id="@+id/nav_settings"
             android:title="Settings"

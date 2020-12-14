@@ -11,8 +11,7 @@ import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 public class TemperaturePreferenceViewModel extends AndroidViewModel
 {
     private SettingsRepository mRepo;
-    private final float MAXTEMP = 40.0f;
-    private final float MINTEMP = 15.0f;
+    private final float TEMPERATURESETPOINT = 20.0f;
 
     public TemperaturePreferenceViewModel(Application application)
     {
@@ -25,7 +24,7 @@ public class TemperaturePreferenceViewModel extends AndroidViewModel
         return mRepo.getSettings();
     }
 
-    public void setMaxTemp(double maxTemp)
+    public void setTemperatureSetPoint(double maxTemp)
     {
         Settings temp = mRepo.getSettings().getValue();
         temp.setTemperatureSetPoint(maxTemp);
@@ -34,27 +33,16 @@ public class TemperaturePreferenceViewModel extends AndroidViewModel
 
     public void resetMaxTemp()
     {
-        setMaxTemp(MAXTEMP);
-        mRepo.storeMinTemperatureSetting(MINTEMP);
+        setTemperatureSetPoint(TEMPERATURESETPOINT);
     }
 
-    public void storeMaxTemperatureSetting(float max)
+    public void storeTemperatureSetPoint(float max)
     {
-        mRepo.storeMaxTemperatureSetting(max);
+        mRepo.storeTemperatureSetPoint(max);
     }
 
-    public void storeMinTemperatureSetting(float min)
+    public float getStoredTemperatureSetPoint()
     {
-        mRepo.storeMinTemperatureSetting(min);
-    }
-
-    public float getStoredMaxTemperatureSetting()
-    {
-        return mRepo.getMaxTemperatureSetting();
-    }
-
-    public float getStoredMinTemperatureSetting()
-    {
-        return mRepo.getMinTemperatureSetting();
+        return mRepo.getTemperatureSetPoint();
     }
 }

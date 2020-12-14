@@ -32,7 +32,6 @@ public class NightOverviewFragment extends Fragment
     private ImageView mTempImage, mCo2Image, mHumiImage;
 
     private NightOverviewViewModel mViewModel;
-    private SharedPreferences mPrefs;
 
     @Nullable
     @Override
@@ -41,7 +40,6 @@ public class NightOverviewFragment extends Fragment
         View root = inflater.inflate(R.layout.fragment_nightoverview, container, false);
         findViews(root);
         mViewModel = new ViewModelProvider(this).get(NightOverviewViewModel.class);
-        mPrefs = root.getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         setObserver();
         return root;
     }
