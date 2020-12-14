@@ -143,18 +143,16 @@ public class DetailedReadingsFragment extends Fragment
         minEntries.add(new Entry(0, minPreference));
         minEntries.add(new Entry(linedata.getXMax(), minPreference));
         LineDataSet minDataSet = new LineDataSet(minEntries,"Minimum preferred");
-        minDataSet.setColor(getContext().getColor(R.color.red_warning_900));
-        minDataSet.setCircleColor(getContext().getColor(R.color.red_warning_900));
-
+        minDataSet.setColor(getContext().getColor(R.color.blue_warning_900));
+        minDataSet.setCircleColor(getContext().getColor(R.color.blue_warning_900));
 
         List<Entry> maxEntries = new ArrayList<>();
         int maxPreference = mViewModel.getMaxHumidityPreference();
         maxEntries.add(new Entry(0, maxPreference));
         maxEntries.add(new Entry(linedata.getXMax(), maxPreference));
         LineDataSet maxDataSet = new LineDataSet(maxEntries,"Maximum preferred");
-        maxDataSet.setColor(getContext().getColor(R.color.blue_warning_900));
-        maxDataSet.setCircleColor(getContext().getColor(R.color.blue_warning_900));
-
+        maxDataSet.setColor(getContext().getColor(R.color.red_warning_900));
+        maxDataSet.setCircleColor(getContext().getColor(R.color.red_warning_900));
 
         linedata.addDataSet(minDataSet);
         linedata.addDataSet(maxDataSet);
@@ -271,17 +269,16 @@ public class DetailedReadingsFragment extends Fragment
         minEntries.add(new Entry(0, minPreference));
         minEntries.add(new Entry(linedata.getXMax(), minPreference));
         LineDataSet minDataSet = new LineDataSet(minEntries,"Minimum preferred");
-        minDataSet.setColor(getContext().getColor(R.color.red_warning_900));
-        minDataSet.setCircleColor(getContext().getColor(R.color.red_warning_900));
+        minDataSet.setColor(getContext().getColor(R.color.blue_warning_900));
+        minDataSet.setCircleColor(getContext().getColor(R.color.blue_warning_900));
 
         List<Entry> maxEntries = new ArrayList<>();
         int maxPreference = mViewModel.getMaxCo2Preference();
         maxEntries.add(new Entry(0, maxPreference));
         maxEntries.add(new Entry(linedata.getXMax(), maxPreference));
         LineDataSet maxDataSet = new LineDataSet(maxEntries,"Maximum preferred");
-        maxDataSet.setColor(getContext().getColor(R.color.blue_warning_900));
-        maxDataSet.setCircleColor(getContext().getColor(R.color.blue_warning_900));
-
+        maxDataSet.setColor(getContext().getColor(R.color.red_warning_900));
+        maxDataSet.setCircleColor(getContext().getColor(R.color.red_warning_900));
 
         linedata.addDataSet(minDataSet);
         linedata.addDataSet(maxDataSet);
