@@ -26,7 +26,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
         settingsMutableLiveData.setValue(settings);
 
         liveMeasurementsMutableLiveData = new MutableLiveData<>();
-        LiveMeasurements measurements = new LiveMeasurements(100, 1000, 40);
+        LiveMeasurements measurements = new LiveMeasurements(100, 1000, 24);
         liveMeasurementsMutableLiveData.setValue(measurements);
     }
 

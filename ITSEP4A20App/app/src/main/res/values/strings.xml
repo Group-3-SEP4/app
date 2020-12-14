@@ -55,4 +55,7 @@
     <string name="current_max_co2">Current maximum value is: %1$d ppm</string>
     <string name="summary_reset_humidity">Reset humidity to recommended</string>
     <string name="summary_reset_temperature">Reset temperature to recommended</string>
+    <string name="co2_current_reading">Current CO2:</string>
+    <string name="current_temperature">Current temperature:</string>
+    <string name="current_humidity">Current humidity:</string>
 </resources>

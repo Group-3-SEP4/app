@@ -1,3 +1,4 @@
+
 package com.example.it_sep4_a20_app.ui.livereadings;
 
 import androidx.lifecycle.Observer;
@@ -54,25 +55,11 @@ public class LiveReadingsFragment extends Fragment {
         mTemperatureReading = root.findViewById(R.id.textView_temperatureReading);
 
         mChartCo2 = root.findViewById(R.id.chart_co2);
-        mChartCo2.setMaxAngle(270f); // Sets max angle of the graph to be 270°
-        mChartCo2.animateY(1400, Easing.EaseInOutQuad);
-        mChartCo2.setTouchEnabled(false); // Disables graph intractability
-        mChartCo2.getLegend().setEnabled(false); // Disables legend
-        mChartCo2.getDescription().setEnabled(false); // Disables description
-
+        initCharts(mChartCo2, root);
         mChartTemperature = root.findViewById(R.id.chart_temperature);
-        mChartTemperature.setMaxAngle(270f);
-        mChartTemperature.animateY(1400, Easing.EaseInOutQuad);
-        mChartTemperature.setTouchEnabled(false);
-        mChartTemperature.getLegend().setEnabled(false);
-        mChartTemperature.getDescription().setEnabled(false);
-
+        initCharts(mChartTemperature, root);
         mChartHumidity = root.findViewById(R.id.chart_humidity);
-        mChartHumidity.setMaxAngle(270f);
-        mChartHumidity.animateY(1400, Easing.EaseInOutQuad);
-        mChartHumidity.setTouchEnabled(false);
-        mChartHumidity.getLegend().setEnabled(false);
-        mChartHumidity.getDescription().setEnabled(false);
+        initCharts(mChartHumidity, root);
 
         return root;
     }
@@ -107,7 +94,15 @@ public class LiveReadingsFragment extends Fragment {
         });
     }
 
-    public void setDataCo2(int count, float range, int value) {
+    private void initCharts(PieChart chart, View root) {
+        chart.setMaxAngle(270f);
+        chart.animateY(1400, Easing.EaseInOutQuad);
+        chart.setTouchEnabled(false); // Disables graph intractability
+        chart.getLegend().setEnabled(false); // Disables legend
+        chart.getDescription().setEnabled(false); // Disables description
+    }
+
+    private void setDataCo2(int count, float range, int value) {
         ArrayList<PieEntry> values = new ArrayList<>();
         // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
@@ -139,7 +134,7 @@ public class LiveReadingsFragment extends Fragment {
         mChartCo2.invalidate();
     }
 
-    public void setDataTemperature(int count, float range, double value) {
+    private void setDataTemperature(int count, float range, double value) {
         ArrayList<PieEntry> values = new ArrayList<>();
         // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
@@ -172,7 +167,7 @@ public class LiveReadingsFragment extends Fragment {
         mChartTemperature.invalidate();
     }
 
-    public void setDataHumidity(int count, float range, int value) {
+    private void setDataHumidity(int count, float range, int value) {
         ArrayList<PieEntry> values = new ArrayList<>();
         // Changes value of measured value to range to not overflow when making a graph
         if (range < value) {
@@ -204,5 +199,7 @@ public class LiveReadingsFragment extends Fragment {
         // Informs the chart about changes and displays them
         mChartHumidity.invalidate();
     }
+
+
 
 }
