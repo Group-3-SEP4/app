@@ -7,7 +7,9 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 import com.example.it_sep4_a20_app.util.Constants;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class HumidityPreferenceViewModel extends AndroidViewModel
 {
     private SettingsRepository mRepo;

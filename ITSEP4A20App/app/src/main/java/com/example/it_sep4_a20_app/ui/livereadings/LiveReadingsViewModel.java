@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
-
+/**
+ * @author David Nguyen
+ */
 public class LiveReadingsViewModel extends ViewModel {
     private ReadingsRepository mRepo;
 

@@ -1,5 +1,7 @@
 package com.example.it_sep4_a20_app.util;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class Constants
 {
     public static final int MAXCO2 = 1500;

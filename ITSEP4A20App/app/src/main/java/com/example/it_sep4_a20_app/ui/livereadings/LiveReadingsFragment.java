@@ -22,7 +22,9 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
-
+/**
+ * @author David Nguyen
+ */
 public class LiveReadingsFragment extends Fragment {
 
     private LiveReadingsViewModel mViewModel;

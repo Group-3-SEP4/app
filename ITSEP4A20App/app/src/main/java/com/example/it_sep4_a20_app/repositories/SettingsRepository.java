@@ -14,7 +14,9 @@ import com.example.it_sep4_a20_app.networking.SettingsAPIClient;
 import com.example.it_sep4_a20_app.data.models.Settings;
 import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
 import com.example.it_sep4_a20_app.util.Constants;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class SettingsRepository
 {
     private static SettingsRepository instance;

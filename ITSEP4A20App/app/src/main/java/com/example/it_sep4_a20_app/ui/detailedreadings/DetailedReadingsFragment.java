@@ -26,7 +26,9 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class DetailedReadingsFragment extends Fragment
 {
     private DetailedReadingsViewModel mViewModel;

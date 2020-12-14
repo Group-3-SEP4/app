@@ -16,7 +16,9 @@ import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
 import java.util.List;
-
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class DetailedReadingsViewModel extends AndroidViewModel
 {
     private ReadingsRepository mReadingsRepository;

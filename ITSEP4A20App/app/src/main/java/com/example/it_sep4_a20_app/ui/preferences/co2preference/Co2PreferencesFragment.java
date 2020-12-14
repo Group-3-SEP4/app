@@ -20,6 +20,9 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.example.it_sep4_a20_app.R;
 import com.example.it_sep4_a20_app.data.models.Settings;
 
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class Co2PreferencesFragment extends PreferenceFragmentCompat {
 
     private Co2PreferencesViewModel mViewModel;

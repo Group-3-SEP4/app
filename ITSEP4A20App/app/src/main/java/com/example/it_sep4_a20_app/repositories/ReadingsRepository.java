@@ -6,14 +6,13 @@ import androidx.lifecycle.LiveData;
 
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.data.models.NightOverview;
-import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedCo2;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
 import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
 import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
 
-import java.util.List;
-
-
+/**
+ * @author Tobias Sønderbo, David Nguyen
+ */
 public class ReadingsRepository
 {
     private IReadingsAPIClient mApiClient;
@@ -42,7 +41,7 @@ public class ReadingsRepository
 
     public LiveData<NightOverview> getNightOverview()
     {
-        return mApiClient.NightOverview();
+        return mApiClient.getNightOverview();
     }
 
     public LiveData<DetailedMeasurements> getDetailedMeasurements()

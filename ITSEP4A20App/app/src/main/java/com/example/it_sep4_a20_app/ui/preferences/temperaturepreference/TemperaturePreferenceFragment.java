@@ -14,7 +14,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.it_sep4_a20_app.R;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class TemperaturePreferenceFragment extends PreferenceFragmentCompat
 {
     private TemperaturePreferenceViewModel mViewModel;

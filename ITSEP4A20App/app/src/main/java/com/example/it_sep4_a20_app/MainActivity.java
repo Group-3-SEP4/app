@@ -32,9 +32,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder
-                ( R.id.nav_home
-                , R.id.nav_liveReadings
-                , R.id.nav_parameter
+                ( R.id.nav_liveReadings
                 , R.id.nav_night_overview
                 , R.id.nav_detailed_readings
                 , R.id.nav_settings)

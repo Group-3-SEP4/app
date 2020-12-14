@@ -8,7 +8,9 @@ import androidx.lifecycle.LiveData;
 import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
-
+/**
+ * @author Tobias Sønderbo
+ */
 public class NightOverviewViewModel extends AndroidViewModel
 {
     private ReadingsRepository mReadingsRepo;
