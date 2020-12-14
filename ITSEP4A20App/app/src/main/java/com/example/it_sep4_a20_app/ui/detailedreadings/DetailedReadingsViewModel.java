@@ -59,5 +59,3 @@ public class DetailedReadingsViewModel extends AndroidViewModel
         return mSettingsRepository.getMaxCo2Setting();
     }
 }
-
-//TODO Fix the dummy and repo - Add lines that show preferences
