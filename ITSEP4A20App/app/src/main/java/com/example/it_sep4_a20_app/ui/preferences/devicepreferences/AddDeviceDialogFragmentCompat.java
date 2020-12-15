@@ -9,6 +9,12 @@ import androidx.preference.Preference;
 import com.example.it_sep4_a20_app.R;
 import com.example.it_sep4_a20_app.data.models.Room;
 
+/*
+Based on library implementation of EditTextPreferenceDialogFragmentCompat
+Source found here:
+https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/preference/preference/src/main/java/androidx/preference/EditTextPreferenceDialogFragmentCompat.java
+ */
+
 public class AddDeviceDialogFragmentCompat extends androidx.preference.PreferenceDialogFragmentCompat {
 
     private static final String SAVE_STATE_TEXT = "AddDevicePreferenceDialogFragment.text";

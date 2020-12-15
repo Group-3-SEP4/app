@@ -6,7 +6,7 @@
     <ListPreference
         android:defaultValue="1"
         android:key="device list"
-        android:title="Select a device" />
+        android:title="Currently selected device" />
 
     <com.example.it_sep4_a20_app.ui.preferences.devicepreferences.AddDevicePreference
         android:key="new device"

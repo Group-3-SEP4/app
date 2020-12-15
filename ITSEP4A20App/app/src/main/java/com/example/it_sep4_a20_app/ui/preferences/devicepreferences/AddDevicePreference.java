@@ -14,7 +14,11 @@ import androidx.core.content.res.TypedArrayUtils;
 
 import com.example.it_sep4_a20_app.R;
 
-
+/*
+Based on library implementation of the EditTextPreference.
+Source found here:
+https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/preference/preference/src/main/java/androidx/preference/EditTextPreference.java
+ */
 public class AddDevicePreference extends androidx.preference.DialogPreference {
     private int mDialogLayoutResId = R.layout.preference_dialog_add_device;
     private String mText;

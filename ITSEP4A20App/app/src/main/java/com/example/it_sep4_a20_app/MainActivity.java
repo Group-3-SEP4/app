@@ -1,17 +1,13 @@
 package com.example.it_sep4_a20_app;
 
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.it_sep4_a20_app.data.models.Room;
-import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -22,16 +18,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * @author Claire Zubiauure
+ */
 public class MainActivity extends AppCompatActivity
 {
-
+    private MainActivityViewModel viewModel;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new MainActivityViewModel(getApplication());
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,7 +59,6 @@ public class MainActivity extends AppCompatActivity
         // We can now look up items within the header if needed
         //ImageView ivHeaderPhoto = headerLayout.findViewById(R.id.imageView);
 
-
     }
 
 
@@ -66,11 +67,21 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
 
-        ArrayList<Room> devices = SettingsRepository.getInstance(getApplication()).getDevicesSetting();
+        List<Room> devices = viewModel.getDevices();
 
         for (int i=0; i<devices.size(); i++) {
-            menu.add(devices.get(i).getName());
+            MenuItem item = menu.add(devices.get(i).getName());
+
+            int finalI = i;
+            item.setOnMenuItemClickListener (new MenuItem.OnMenuItemClickListener(){
+                @Override
+                public boolean onMenuItemClick (MenuItem item){
+                    viewModel.storeSelectedDeviceId(devices.get(finalI).getRoomId().toString());
+                    return true;
+                }
+            });
         }
+
         return true;
     }
 

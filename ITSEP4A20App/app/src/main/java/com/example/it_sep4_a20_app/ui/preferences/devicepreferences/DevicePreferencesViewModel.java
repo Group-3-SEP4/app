@@ -31,10 +31,14 @@ public class DevicePreferencesViewModel extends AndroidViewModel {
     public void removeDevice(String device_id) {
         ArrayList<Room> rooms = mRepo.getDevicesSetting();
         for (int i=0; i<rooms.size(); i++) {
-            if (rooms.get(i).getRoomId() == device_id)
+            if (rooms.get(i).getRoomId().equals(device_id)) {
                 rooms.remove(i);
                 break;
+            }
         }
         mRepo.storeDevicesSetting(rooms);
     }
+
+    public void storeSelectedDevice(String device_id) { mRepo.storeSelectedDeviceId(device_id); }
+    public String getSelectedDevice() { return mRepo.getSelectedDeviceId(); }
 }

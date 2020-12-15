@@ -37,6 +37,12 @@ public class DevicePreferencesFragment extends PreferenceFragmentCompat {
         AddDevicePreference newDevice = findPreference("new device");
         Preference removeDevice = findPreference("remove device");
 
+        selectedDevice.setOnPreferenceChangeListener((preference, newValue) -> {
+            viewModel.storeSelectedDevice((String) newValue);
+            setDeviceListPreferenceData(selectedDevice);
+            return true;
+        });
+
         newDevice.setOnPreferenceChangeListener((preference, newValue) -> {
             viewModel.storeDevice((Room) newValue);
             setDeviceListPreferenceData(selectedDevice);
@@ -64,23 +70,24 @@ public class DevicePreferencesFragment extends PreferenceFragmentCompat {
 
     protected  void setDeviceListPreferenceData(ListPreference lp) {
         List<Room> rooms = viewModel.getDevices();
+        String selectedDeviceId = viewModel.getSelectedDevice();
+        String selectedDeviceName = "No device selected";
         CharSequence[] entries = new CharSequence[rooms.size()];
         CharSequence[] entryValues = new CharSequence[rooms.size()];
 
         for (int i=0; i < rooms.size(); i++) {
             entries[i] = rooms.get(i).getName();
             entryValues[i] = rooms.get(i).getRoomId();
+
+            if (selectedDeviceId.equals(entryValues[i]))
+                selectedDeviceName = entries[i].toString();
         }
 
         lp.setEntries(entries);
         lp.setEntryValues(entryValues);
 
-        if (rooms.size() == 0) {
-            lp.setSummary("No devices added");
-        } else {
-            lp.setDefaultValue(entries[0]);
-            lp.setSummary(entries[0]);
-        }
+        lp.setSummary(selectedDeviceName);
+
     }
 
 

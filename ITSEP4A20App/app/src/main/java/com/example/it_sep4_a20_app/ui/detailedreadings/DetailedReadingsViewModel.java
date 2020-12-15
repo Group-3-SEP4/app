@@ -8,6 +8,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.it_sep4_a20_app.ActiveDevice;
+import com.example.it_sep4_a20_app.OnDeviceChangeListener;
+import com.example.it_sep4_a20_app.data.models.Room;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedCo2;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedHumidity;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
@@ -29,6 +32,14 @@ public class DetailedReadingsViewModel extends AndroidViewModel
         super(application);
         mReadingsRepository = ReadingsRepository.getInstance();
         mSettingsRepository = SettingsRepository.getInstance(application);
+
+        ActiveDevice device = ActiveDevice.getInstance();
+        device.registerOnDeviceChangeListener(new OnDeviceChangeListener() {
+            @Override
+            public void OnDeviceChange(Room device) {
+                mReadingsRepository.setDeviceId(device.getRoomId());
+            }
+        });
     }
 
     public LiveData<DetailedMeasurements> getDetailedMeasurements()

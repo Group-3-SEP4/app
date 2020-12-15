@@ -100,6 +100,10 @@ public class SettingsRepository
         mPreferences.edit().putString("devices", rooms_json).apply();
     }
 
+    public void storeSelectedDeviceId(String device_id) {
+        mPreferences.edit().putString("selected_device_id", device_id).apply();
+    }
+
     public float getTemperatureSetPoint()
     {
         return mPreferences.getFloat("setpoint_temperature", Constants.TEMPERATURESETPOINT);
@@ -131,4 +135,9 @@ public class SettingsRepository
         ArrayList<Room> rooms = gson.fromJson(mPreferences.getString("devices", "[]"), roomListType);
         return rooms;
     }
+
+    public String getSelectedDeviceId() {
+        return mPreferences.getString("selected_device_id", "no device selected");
+    }
+
 }

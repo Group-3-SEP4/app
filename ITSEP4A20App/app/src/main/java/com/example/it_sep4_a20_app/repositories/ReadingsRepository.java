@@ -19,6 +19,7 @@ public class ReadingsRepository
     private IReadingsAPIClient mApiClient;
     private static ReadingsRepository instance;
     private static final String TAG = "ReadingsRepository";
+    private String deviceId;
 
     public static ReadingsRepository getInstance()
     {
@@ -48,5 +49,10 @@ public class ReadingsRepository
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
         return mApiClient.getDetailedMeasurements();
+    }
+
+    public void setDeviceId(String device_id) {
+        this.deviceId = device_id;
+        //also do whatever else needed in a real case
     }
 }
