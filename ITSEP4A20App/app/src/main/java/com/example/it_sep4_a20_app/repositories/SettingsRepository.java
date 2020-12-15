@@ -9,13 +9,21 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.it_sep4_a20_app.data.models.Room;
 import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
 import com.example.it_sep4_a20_app.networking.SettingsAPIClient;
 import com.example.it_sep4_a20_app.data.models.Settings;
 import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.it_sep4_a20_app.util.Constants;
 /**
- * @author Tobias Sønderbo
+ * @author Tobias Sønderbo, Claire Zubiaurre
  */
 public class SettingsRepository
 {
@@ -85,6 +93,13 @@ public class SettingsRepository
         mPreferences.edit().putInt("max_humidity",max).apply();
     }
 
+    public void storeDevicesSetting(List<Room> rooms)
+    {
+        Gson gson = new Gson();
+        String rooms_json = gson.toJson(rooms);
+        mPreferences.edit().putString("devices", rooms_json).apply();
+    }
+
     public float getTemperatureSetPoint()
     {
         return mPreferences.getFloat("setpoint_temperature", Constants.TEMPERATURESETPOINT);
@@ -108,5 +123,12 @@ public class SettingsRepository
     public int getMinHumiditySetting()
     {
         return mPreferences.getInt("min_humidity",Constants.MINHUMIDITY);
+    }
+
+    public ArrayList<Room> getDevicesSetting() {
+        Gson gson = new Gson();
+        Type roomListType = new TypeToken<ArrayList<Room>>(){}.getType();
+        ArrayList<Room> rooms = gson.fromJson(mPreferences.getString("devices", "[]"), roomListType);
+        return rooms;
     }
 }

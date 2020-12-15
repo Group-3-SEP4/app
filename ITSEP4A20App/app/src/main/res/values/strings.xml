@@ -69,4 +69,5 @@
     <string name='key_deviceID'>Device ID</string>
     <string name='title_editDeviceID'>Edit Device ID</string>
     <string name='key_preference_device'>Device_preferences</string>
+    <string name='key_preference_device_add'>Device_preferences_add</string>
 </resources>

@@ -6,9 +6,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -18,6 +21,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -52,12 +57,20 @@ public class MainActivity extends AppCompatActivity
         // We can now look up items within the header if needed
         //ImageView ivHeaderPhoto = headerLayout.findViewById(R.id.imageView);
 
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
+
+        ArrayList<Room> devices = SettingsRepository.getInstance(getApplication()).getDevicesSetting();
+
+        for (int i=0; i<devices.size(); i++) {
+            menu.add(devices.get(i).getName());
+        }
         return true;
     }
 

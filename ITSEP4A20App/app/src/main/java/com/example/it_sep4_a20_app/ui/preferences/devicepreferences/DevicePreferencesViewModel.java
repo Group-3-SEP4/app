@@ -4,7 +4,11 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.it_sep4_a20_app.data.models.Room;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DevicePreferencesViewModel extends AndroidViewModel {
     private SettingsRepository mRepo;
@@ -14,12 +18,23 @@ public class DevicePreferencesViewModel extends AndroidViewModel {
         this.mRepo = SettingsRepository.getInstance(application);
     }
 
-    public void setDeviceId(String roomId) {
-        mRepo.storeDeviceIdSetting(roomId);
+    public void storeDevice(Room room) {
+        ArrayList<Room> rooms = mRepo.getDevicesSetting();
+        rooms.add(room);
+        mRepo.storeDevicesSetting(rooms);
     }
 
-    public String getDeviceId() {
-        return mRepo.getDeviceIdSetting();
+    public List<Room> getDevices() {
+        return mRepo.getDevicesSetting();
     }
 
+    public void removeDevice(String device_id) {
+        ArrayList<Room> rooms = mRepo.getDevicesSetting();
+        for (int i=0; i<rooms.size(); i++) {
+            if (rooms.get(i).getRoomId() == device_id)
+                rooms.remove(i);
+                break;
+        }
+        mRepo.storeDevicesSetting(rooms);
+    }
 }
