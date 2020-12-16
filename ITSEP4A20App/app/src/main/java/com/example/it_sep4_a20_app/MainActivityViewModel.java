@@ -4,7 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
 import java.util.List;
@@ -20,15 +20,15 @@ public class MainActivityViewModel extends AndroidViewModel {
         this.mRepo = SettingsRepository.getInstance(application);
     }
 
-    public List<Room> getDevices() {
+    public List<Device> getDevices() {
         return mRepo.getDevicesSetting();
     }
 
-    public Room getDevice(String device_id) {
-        List<Room> rooms = getDevices();
-        for (int i=0; i<rooms.size(); i++) {
-            if (rooms.get(i).getRoomId().equals(device_id)) {
-                return rooms.get(i);
+    public Device getDevice(String device_id) {
+        List<Device> devices = getDevices();
+        for (int i = 0; i< devices.size(); i++) {
+            if (devices.get(i).getRoomId().equals(device_id)) {
+                return devices.get(i);
             }
         }
         return null;
@@ -36,7 +36,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public void storeSelectedDeviceId(String device_id) {
         mRepo.storeSelectedDeviceId(device_id);
-        Room device = getDevice(device_id);
+        Device device = getDevice(device_id);
         ActiveDevice.getInstance().setDevice(device);
     }
 

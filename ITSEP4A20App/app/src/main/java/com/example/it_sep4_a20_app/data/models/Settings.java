@@ -8,19 +8,19 @@ public class Settings {
     private double temperatureSetPoint;
     private int ppmMin;
     private int ppmMax;
-    private List<Room> room;
+    private List<Device> device;
 
     public Settings() {
     }
 
     public Settings(int settingsId, String lastUpdate,
-                    double temperatureSetPoint, int co2Min, int co2Max, List<Room> rooms) {
+                    double temperatureSetPoint, int co2Min, int co2Max, List<Device> devices) {
         this.settingsId = settingsId;
         this.lastUpdate = lastUpdate;
         this.temperatureSetPoint = temperatureSetPoint;
         this.ppmMin = co2Min;
         this.ppmMax = co2Max;
-        this.room = rooms;
+        this.device = devices;
     }
 
     public int getSettingsId() {
@@ -63,12 +63,12 @@ public class Settings {
         return ppmMax;
     }
 
-    public List<Room> getRooms() {
-        return room;
+    public List<Device> getRooms() {
+        return device;
     }
 
-    public void setRooms(List<Room> rooms) {
-        this.room = rooms;
+    public void setRooms(List<Device> devices) {
+        this.device = devices;
     }
 
 

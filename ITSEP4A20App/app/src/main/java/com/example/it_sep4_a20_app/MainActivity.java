@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -21,7 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.List;
 
 /**
- * @author Claire Zubiauure
+ * @author Claire Zubiaurre
  */
 public class MainActivity extends AppCompatActivity
 {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
 
-        List<Room> devices = viewModel.getDevices();
+        List<Device> devices = viewModel.getDevices();
 
         for (int i=0; i<devices.size(); i++) {
             MenuItem item = menu.add(devices.get(i).getName());

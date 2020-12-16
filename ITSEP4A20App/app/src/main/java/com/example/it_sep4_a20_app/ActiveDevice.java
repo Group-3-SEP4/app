@@ -1,14 +1,17 @@
 package com.example.it_sep4_a20_app;
 
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 
 import java.util.ArrayList;
 
+/**
+ * @author Claire Zubiaurre
+ */
 public class ActiveDevice {
 
     private static ActiveDevice instance;
     private ArrayList<OnDeviceChangeListener> observers = new ArrayList<>();
-    private Room device;
+    private Device device;
 
     public static ActiveDevice getInstance()
     {
@@ -29,12 +32,12 @@ public class ActiveDevice {
         observers.add(observer);
     }
 
-    public void setDevice(Room device) {
+    public void setDevice(Device device) {
         this.device = device;
         alertOnDeviceChangeObservers();
     }
 
-    public Room getDevice() {
+    public Device getDevice() {
         return device;
     }
 }

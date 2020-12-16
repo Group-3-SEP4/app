@@ -1,7 +1,6 @@
 package com.example.it_sep4_a20_app.ui.preferences.devicepreferences;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +8,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import com.example.it_sep4_a20_app.R;
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
+/*
+ * @author Claire Zubiaurre
+ */
 public class DevicePreferencesFragment extends PreferenceFragmentCompat {
     private static final String DIALOG_FRAGMENT_TAG =
             "androidx.preference.PreferenceFragment.DIALOG";
@@ -44,7 +44,7 @@ public class DevicePreferencesFragment extends PreferenceFragmentCompat {
         });
 
         newDevice.setOnPreferenceChangeListener((preference, newValue) -> {
-            viewModel.storeDevice((Room) newValue);
+            viewModel.storeDevice((Device) newValue);
             setDeviceListPreferenceData(selectedDevice);
             return true;
         });
@@ -69,15 +69,15 @@ public class DevicePreferencesFragment extends PreferenceFragmentCompat {
     }
 
     protected  void setDeviceListPreferenceData(ListPreference lp) {
-        List<Room> rooms = viewModel.getDevices();
+        List<Device> devices = viewModel.getDevices();
         String selectedDeviceId = viewModel.getSelectedDevice();
         String selectedDeviceName = "No device selected";
-        CharSequence[] entries = new CharSequence[rooms.size()];
-        CharSequence[] entryValues = new CharSequence[rooms.size()];
+        CharSequence[] entries = new CharSequence[devices.size()];
+        CharSequence[] entryValues = new CharSequence[devices.size()];
 
-        for (int i=0; i < rooms.size(); i++) {
-            entries[i] = rooms.get(i).getName();
-            entryValues[i] = rooms.get(i).getRoomId();
+        for (int i = 0; i < devices.size(); i++) {
+            entries[i] = devices.get(i).getName();
+            entryValues[i] = devices.get(i).getRoomId();
 
             if (selectedDeviceId.equals(entryValues[i]))
                 selectedDeviceName = entries[i].toString();

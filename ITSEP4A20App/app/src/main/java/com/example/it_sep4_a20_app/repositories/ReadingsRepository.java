@@ -12,7 +12,7 @@ import com.example.it_sep4_a20_app.networking.ReadingsAPIClient;
 import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
 
 /**
- * @author Tobias Sønderbo, David Nguyen
+ * @author Tobias Sønderbo, David Nguyen, Claire Zubiaurre
  */
 public class ReadingsRepository
 {

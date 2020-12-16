@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.preference.Preference;
-
 import com.example.it_sep4_a20_app.R;
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 
 /*
+ * @author Claire Zubiaurre
+
+
 Based on library implementation of EditTextPreferenceDialogFragmentCompat
 Source found here:
 https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/preference/preference/src/main/java/androidx/preference/EditTextPreferenceDialogFragmentCompat.java
@@ -71,11 +72,11 @@ public class AddDeviceDialogFragmentCompat extends androidx.preference.Preferenc
         if (positiveResult) {
             String id = mEditText1.getText().toString();
             String name = mEditText2.getText().toString();
-            Room room = new Room();
-            room.setRoomId(id);
-            room.setName(name);
+            Device device = new Device();
+            device.setRoomId(id);
+            device.setName(name);
             final AddDevicePreference preference = getAddDevicePreference();
-            preference.callChangeListener(room);
+            preference.callChangeListener(device);
         }
     }
 

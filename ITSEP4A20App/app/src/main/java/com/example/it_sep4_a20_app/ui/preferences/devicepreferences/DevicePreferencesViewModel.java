@@ -4,12 +4,15 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * @author Claire Zubiaurre
+ */
 public class DevicePreferencesViewModel extends AndroidViewModel {
     private SettingsRepository mRepo;
 
@@ -18,25 +21,25 @@ public class DevicePreferencesViewModel extends AndroidViewModel {
         this.mRepo = SettingsRepository.getInstance(application);
     }
 
-    public void storeDevice(Room room) {
-        ArrayList<Room> rooms = mRepo.getDevicesSetting();
-        rooms.add(room);
-        mRepo.storeDevicesSetting(rooms);
+    public void storeDevice(Device device) {
+        ArrayList<Device> devices = mRepo.getDevicesSetting();
+        devices.add(device);
+        mRepo.storeDevicesSetting(devices);
     }
 
-    public List<Room> getDevices() {
+    public List<Device> getDevices() {
         return mRepo.getDevicesSetting();
     }
 
     public void removeDevice(String device_id) {
-        ArrayList<Room> rooms = mRepo.getDevicesSetting();
-        for (int i=0; i<rooms.size(); i++) {
-            if (rooms.get(i).getRoomId().equals(device_id)) {
-                rooms.remove(i);
+        ArrayList<Device> devices = mRepo.getDevicesSetting();
+        for (int i = 0; i< devices.size(); i++) {
+            if (devices.get(i).getRoomId().equals(device_id)) {
+                devices.remove(i);
                 break;
             }
         }
-        mRepo.storeDevicesSetting(rooms);
+        mRepo.storeDevicesSetting(devices);
     }
 
     public void storeSelectedDevice(String device_id) { mRepo.storeSelectedDeviceId(device_id); }

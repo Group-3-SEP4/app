@@ -3,17 +3,14 @@ package com.example.it_sep4_a20_app.repositories;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.AsyncPlayer;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import com.example.it_sep4_a20_app.data.models.Room;
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
 import com.example.it_sep4_a20_app.networking.SettingsAPIClient;
 import com.example.it_sep4_a20_app.data.models.Settings;
-import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -93,10 +90,10 @@ public class SettingsRepository
         mPreferences.edit().putInt("max_humidity",max).apply();
     }
 
-    public void storeDevicesSetting(List<Room> rooms)
+    public void storeDevicesSetting(List<Device> devices)
     {
         Gson gson = new Gson();
-        String rooms_json = gson.toJson(rooms);
+        String rooms_json = gson.toJson(devices);
         mPreferences.edit().putString("devices", rooms_json).apply();
     }
 
@@ -129,11 +126,11 @@ public class SettingsRepository
         return mPreferences.getInt("min_humidity",Constants.MINHUMIDITY);
     }
 
-    public ArrayList<Room> getDevicesSetting() {
+    public ArrayList<Device> getDevicesSetting() {
         Gson gson = new Gson();
-        Type roomListType = new TypeToken<ArrayList<Room>>(){}.getType();
-        ArrayList<Room> rooms = gson.fromJson(mPreferences.getString("devices", "[]"), roomListType);
-        return rooms;
+        Type roomListType = new TypeToken<ArrayList<Device>>(){}.getType();
+        ArrayList<Device> devices = gson.fromJson(mPreferences.getString("devices", "[]"), roomListType);
+        return devices;
     }
 
     public String getSelectedDeviceId() {

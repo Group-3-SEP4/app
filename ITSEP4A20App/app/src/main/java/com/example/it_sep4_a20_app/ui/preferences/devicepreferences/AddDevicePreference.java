@@ -15,6 +15,8 @@ import androidx.core.content.res.TypedArrayUtils;
 import com.example.it_sep4_a20_app.R;
 
 /*
+ * @author Claire Zubiaurre
+
 Based on library implementation of the EditTextPreference.
 Source found here:
 https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/preference/preference/src/main/java/androidx/preference/EditTextPreference.java

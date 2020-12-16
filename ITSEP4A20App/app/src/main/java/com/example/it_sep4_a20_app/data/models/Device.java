@@ -1,11 +1,14 @@
 package com.example.it_sep4_a20_app.data.models;
 
-public class Room {
+/**
+ * @author Claire Zubiaurre
+ */
+public class Device {
     private String roomId;
     private int settingsId;
     private String name;
 
-    public Room(){
+    public Device(){
     }
 
     public String getRoomId() {
