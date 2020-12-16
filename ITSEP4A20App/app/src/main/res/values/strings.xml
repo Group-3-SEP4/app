@@ -48,11 +48,17 @@
     <string name="key_resetHumidity">resetHumidity</string>
     <string name="title_resetHumidity">Reset humidity to recommended</string>
     <string name="key_preference_humidity">humidity_preference</string>
-    <string name="current_min_temperature">Current minimum temperature: %1$.1f C</string>
+    <string name="current_temperature_setpoint">Current temperature set point: %1$.1f C</string>
     <string name="current_max_humidity">Current max humidity: %1$d %%RH</string>
     <string name="current_min_humidity">Current min humidity: %1$d %%RH</string>
     <string name="current_min_co2">Current minimum value is: %1$d ppm</string>
     <string name="current_max_co2">Current maximum value is: %1$d ppm</string>
     <string name="summary_reset_humidity">Reset humidity to recommended</string>
-    <string name="summary_reset_temperature">Reset temperature setpoint to recommended</string>
+    <string name="co2_current_reading">Current CO2:</string>
+    <string name="current_temperature">Current temperature:</string>
+    <string name="current_humidity">Current humidity:</string>
+    <string name="summary_reset_temperature">Reset temperature set point to recommended</string>
+    <string name="current_servo_position">Position of the servo is at %1$d %%</string>
+    <string name="current_window_state_open">The window is open.</string>
+    <string name="current_window_state_closed">The window is closed.</string>
 </resources>

@@ -31,13 +31,13 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
         settingsMutableLiveData = new MutableLiveData<>();
         Settings settings = new Settings();
         settings.setTemperatureSetPoint(32.0);
+        settings.setPpmMax(1000);
         settingsMutableLiveData.setValue(settings);
 
         liveMeasurementsMutableLiveData = new MutableLiveData<>();
-        LiveMeasurements measurements = new LiveMeasurements(80, 800, 24);
+        LiveMeasurements measurements = new LiveMeasurements(100, 1000, 24, 0);
         liveMeasurementsMutableLiveData.setValue(measurements);
     }
-
 
     @Override
     public LiveData<Settings> getSettings()

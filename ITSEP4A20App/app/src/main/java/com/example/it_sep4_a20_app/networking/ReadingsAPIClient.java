@@ -1,5 +1,6 @@
 package com.example.it_sep4_a20_app.networking;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -25,7 +26,9 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     private MutableLiveData<LiveMeasurements> mLiveMeasurement;
     private static final String TAG = "ReadingsAPIClient";
     //Temporary deviceEui
-    private final String mTempDeviceEui = "0004A30B00219CAC";
+    //Another one "0004A30B00219CB5"
+    //"0004A30B00219CAC"
+    private final String mTempDeviceEui = "0004A30B00219CB5";
 
     private ReadingsAPIClient() {
         this.mApi = ServiceGenerator.getAPI();

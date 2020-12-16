@@ -8,10 +8,11 @@ public class LiveMeasurements {
     private int servoPositionPercentage;
     private String deviceEui;
 
-    public LiveMeasurements(int humidityPercentage, int carbonDioxide, double temperature) {
+    public LiveMeasurements(int humidityPercentage, int carbonDioxide, double temperature, int servoPositionPercentage) {
         this.humidityPercentage = humidityPercentage;
         this.carbonDioxide = carbonDioxide;
         this.temperature = temperature;
+        this.servoPositionPercentage = servoPositionPercentage;
     }
 
     public int getHumidityPercentage() {

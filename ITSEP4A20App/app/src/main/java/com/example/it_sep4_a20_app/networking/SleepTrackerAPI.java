@@ -18,7 +18,7 @@ public interface SleepTrackerAPI
 {
         //TODO add deviceEui as querry
     @GET("/Settings")
-    Call<Settings> getSettings();
+    Call<Settings> getSettings(@Query("deviceEui") String deviceEui);
 
     @POST("/Settings")
     Call<Settings> postSettings(@Body Settings settings);
