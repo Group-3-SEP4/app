@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -61,13 +62,9 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.appbar_menu, menu);
-
+    private void refreshOptionsMenu(Menu menu) {
         List<Device> devices = viewModel.getDevices();
+        menu.clear();
 
         for (int i=0; i<devices.size(); i++) {
             MenuItem item = menu.add(devices.get(i).getName());
@@ -81,6 +78,20 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        refreshOptionsMenu(menu);
+
+        ActiveDevice device = ActiveDevice.getInstance();
+        device.registerOnDeviceChangeListener(new OnDeviceChangeListener() {
+            @Override
+            public void OnDeviceChange(Device device) {
+                refreshOptionsMenu(menu);
+            }
+        });
 
         return true;
     }

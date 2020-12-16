@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.it_sep4_a20_app.ActiveDevice;
 import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
@@ -25,6 +26,7 @@ public class DevicePreferencesViewModel extends AndroidViewModel {
         ArrayList<Device> devices = mRepo.getDevicesSetting();
         devices.add(device);
         mRepo.storeDevicesSetting(devices);
+        ActiveDevice.getInstance().setDevice(device);
     }
 
     public List<Device> getDevices() {
@@ -40,6 +42,10 @@ public class DevicePreferencesViewModel extends AndroidViewModel {
             }
         }
         mRepo.storeDevicesSetting(devices);
+        if (devices.size() > 0)
+            ActiveDevice.getInstance().setDevice(devices.get(0));
+        else
+            ActiveDevice.getInstance().setDevice(null);
     }
 
     public void storeSelectedDevice(String device_id) { mRepo.storeSelectedDeviceId(device_id); }
