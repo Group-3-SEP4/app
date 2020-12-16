@@ -81,7 +81,32 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     @Override
     public LiveData<NightOverview> getNightOverview()
     {
-        return null;
+        return mNightOverview;
+    }
+
+    @Override
+    public void requestNightOverview(String deviceEui)
+    {
+        Call<NightOverview> call = mApi.getNightOverview(deviceEui);
+        call.enqueue(new Callback<NightOverview>()
+        {
+            @Override
+            public void onResponse(Call<NightOverview> call, Response<NightOverview> response)
+            {
+                if(response.code() == 200)
+                {
+                    mNightOverview.setValue(response.body());
+                    Log.i(TAG, "Got night overview: ");
+                }
+                Log.d(TAG, response.code() + "");
+            }
+
+            @Override
+            public void onFailure(Call<NightOverview> call, Throwable t)
+            {
+
+            }
+        });
     }
 
     @Override

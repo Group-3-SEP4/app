@@ -13,6 +13,8 @@ import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
+import java.time.LocalDate;
+
 /**
  * @author Tobias Sønderbo, David Nguyen, Claire Zubiaure
  */
@@ -38,7 +40,11 @@ public class DetailedReadingsViewModel extends AndroidViewModel
 
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
-        return mReadingsRepository.getDetailedMeasurements();
+        LocalDate current = LocalDate.now();
+        String to = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
+        current = current.minusDays(1);
+        String from = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
+        return mReadingsRepository.getDetailedMeasurements(from, to);
     }
 
     public int getMaxHumidityPreference()

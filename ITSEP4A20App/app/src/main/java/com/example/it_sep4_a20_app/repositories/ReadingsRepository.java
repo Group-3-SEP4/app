@@ -44,15 +44,12 @@ public class ReadingsRepository
 
     public LiveData<NightOverview> getNightOverview()
     {
+        mApiClient.requestNightOverview(deviceId);
         return mApiClient.getNightOverview();
     }
 
-    public LiveData<DetailedMeasurements> getDetailedMeasurements()
+    public LiveData<DetailedMeasurements> getDetailedMeasurements(String from, String to)
     {
-        LocalDate current = LocalDate.now();
-        String to = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
-        current = current.minusDays(1);
-        String from = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
         mApiClient.requestDetailedMeasurements(deviceId, from, to);
         return mApiClient.getDetailedMeasurements();
     }

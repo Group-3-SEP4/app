@@ -100,6 +100,12 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     }
 
     @Override
+    public void requestNightOverview(String deviceEui)
+    {
+
+    }
+
+    @Override
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
         MutableLiveData<DetailedMeasurements> data = new MutableLiveData<>();
@@ -151,7 +157,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     }
 
     @Override
-    public void requestDetailedMeasurements(String validFrom, String validTo)
+    public void requestDetailedMeasurements(String deviceEui, String validFrom, String validTo)
     {
 
     }
