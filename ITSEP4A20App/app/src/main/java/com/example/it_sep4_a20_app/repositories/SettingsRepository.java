@@ -28,7 +28,7 @@ public class SettingsRepository
 
     private SettingsRepository(Application application)
     {
-        mApiClient = new APIDummy();
+        mApiClient = SettingsAPIClient.getInstance();
         mPreferences = application.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         mApiClient.getSettings().observeForever(settings ->
         {

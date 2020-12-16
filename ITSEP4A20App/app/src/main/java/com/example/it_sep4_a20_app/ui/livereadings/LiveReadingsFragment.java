@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.it_sep4_a20_app.R;
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
+import com.example.it_sep4_a20_app.util.Constants;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -27,12 +28,12 @@ import java.util.ArrayList;
 public class LiveReadingsFragment extends Fragment {
 
     private LiveReadingsViewModel mViewModel;
+
     //TextViews
     private TextView mCo2Reading;
     private TextView mTemperatureReading;
     private TextView mHumidityReading;
     private TextView mServoReading;
-
     private TextView mCo2Max;
     private TextView mCo2Min;
     private TextView mTemperatureSetPoint;
@@ -40,17 +41,12 @@ public class LiveReadingsFragment extends Fragment {
     private TextView mHumidityMin;
     private TextView mWindowState;
     private TextView mServoPosition;
-    //Pie charts
 
+    //Pie charts
     private PieChart mChartCo2;
     private PieChart mChartTemperature;
     private PieChart mChartHumidity;
     private PieChart mChartServo;
-
-    //Max value for servo from 0-100%
-    private final int MAX_SERVO_POSITION = 100;
-
-
 
     public static LiveReadingsFragment newInstance() {
         return new LiveReadingsFragment();
@@ -111,7 +107,7 @@ public class LiveReadingsFragment extends Fragment {
                 //Getting max and min values
                 int maxCo2 = mViewModel.getMaxCo2();
                 int minCo2 = mViewModel.getMinCo2();
-                double temperatureSetPoint = mViewModel.getTemperatureSetPoint();
+                double temperatureSetPoint = failSafeForTemperature(mViewModel.getTemperatureSetPoint());
                 int maxHumidity = mViewModel.getMaxHumidity();
                 int minHumidity = mViewModel.getMinHumidity();
 
@@ -119,7 +115,7 @@ public class LiveReadingsFragment extends Fragment {
                 setChartData(2, maxCo2, co2, mChartCo2);
                 setChartData(2, (float) temperatureSetPoint, temperature, mChartTemperature);
                 setChartData(2, maxHumidity, humidity, mChartHumidity);
-                setChartData(2, MAX_SERVO_POSITION, servo, mChartServo);
+                setChartData(2, Constants.MAX_SERVO_POSITION, servo, mChartServo);
 
                 // Setting textViews
                 mCo2Reading.setText(co2Reading);
@@ -140,6 +136,15 @@ public class LiveReadingsFragment extends Fragment {
         });
     }
 
+    private double failSafeForTemperature(double temperatureSetPoint) {
+        //To avoid graph setting its range to 0 in case user sets temp set point to 0
+        if(temperatureSetPoint==0) {
+            temperatureSetPoint = 20;
+            return temperatureSetPoint;
+        }else
+            return temperatureSetPoint;
+    }
+
     private void initCharts(PieChart chart, View root) {
         chart.setMaxAngle(270f); //displays 270° of the chart
         chart.animateY(1400, Easing.EaseInOutQuad);
@@ -154,17 +159,20 @@ public class LiveReadingsFragment extends Fragment {
         if (range < value) {
             float temp = range;
             value =(double) temp;
+        } else if (range==0){
+            double temp = value;
+            range = (float) temp;
         }
         // Adding data to data set
         values.add(new PieEntry ((float) value));
         values.add(new PieEntry ((float) range - ((float) value)));
 
         String temp = "";
-        if (chart==mChartCo2) {
+        if (chart == mChartCo2) {
             temp = "Co2";
-        } else if(chart==mChartTemperature) {
+        } else if(chart == mChartTemperature) {
             temp = "Temperature";
-        } else if (chart==mChartHumidity) {
+        } else if (chart == mChartHumidity) {
             temp = "Humidity";
         }
 
