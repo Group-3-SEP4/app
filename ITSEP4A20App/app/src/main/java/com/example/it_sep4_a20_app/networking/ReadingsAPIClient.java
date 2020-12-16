@@ -24,6 +24,7 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     private SleepTrackerAPI mApi;
     private MutableLiveData<NightOverview> mNightOverview;
     private MutableLiveData<LiveMeasurements> mLiveMeasurement;
+    private MutableLiveData<DetailedMeasurements> mDetailedMeasurements;
     private static final String TAG = "ReadingsAPIClient";
     //Temporary deviceEui
     //Another one "0004A30B00219CB5"
@@ -34,6 +35,7 @@ public class ReadingsAPIClient implements IReadingsAPIClient
         this.mApi = ServiceGenerator.getAPI();
         mLiveMeasurement = new MutableLiveData<>();
         mNightOverview = new MutableLiveData<>();
+        mDetailedMeasurements = new MutableLiveData<>();
     }
 
     public static ReadingsAPIClient getInstance()
@@ -85,6 +87,38 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     @Override
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
-        return null;
+        return mDetailedMeasurements;
     }
+
+    @Override
+    public void requestDetailedMeasurements(String deviceEui, String validFrom, String validTo)
+    {
+        Call<DetailedMeasurements> call = mApi.getDetailedMeasurements(mTempDeviceEui, validFrom, validTo);
+        call.enqueue(new Callback<DetailedMeasurements>()
+        {
+            @Override
+            public void onResponse(Call<DetailedMeasurements> call, Response<DetailedMeasurements> response)
+            {
+                if(response.code() == 200)
+                {
+                    mDetailedMeasurements.setValue(response.body());
+                    Log.i(TAG, "Got Detailed measurements");
+                }
+                else
+                {
+                    Log.i(TAG, "Got response but code was: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetailedMeasurements> call, Throwable t)
+            {
+                Log.i(TAG, "Something went wrong :<");
+                Log.i(TAG, t.getLocalizedMessage());
+                Log.i(TAG, t.toString());
+            }
+        });
+    }
+
+
 }

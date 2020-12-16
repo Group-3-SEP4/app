@@ -25,4 +25,9 @@ public interface SleepTrackerAPI
 
     @GET("/Measurements")
     Call<LiveMeasurements> getLiveMeasurement(@Query("deviceEui") String deviceEui);
+
+    @GET("/HistoricalOverview")
+    Call<DetailedMeasurements> getDetailedMeasurements(@Query("deviceEui") String deviceEui,
+                                                       @Query("validFrom") String validFrom,
+                                                       @Query("validTo") String validTo);
 }

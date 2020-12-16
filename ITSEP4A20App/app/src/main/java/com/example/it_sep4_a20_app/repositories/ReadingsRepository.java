@@ -9,7 +9,8 @@ import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
 import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
 import com.example.it_sep4_a20_app.networking.ReadingsAPIClient;
-import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
+
+import java.time.LocalDate;
 
 /**
  * @author Tobias Sønderbo, David Nguyen, Claire Zubiaurre
@@ -48,6 +49,11 @@ public class ReadingsRepository
 
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
+        LocalDate current = LocalDate.now();
+        String to = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
+        current = current.minusDays(1);
+        String from = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
+        mApiClient.requestDetailedMeasurements(deviceId, from, to);
         return mApiClient.getDetailedMeasurements();
     }
 

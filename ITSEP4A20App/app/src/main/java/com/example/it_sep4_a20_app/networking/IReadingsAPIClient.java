@@ -17,4 +17,5 @@ public interface IReadingsAPIClient
     void requestMeasurements();
     LiveData<NightOverview> getNightOverview();
     LiveData<DetailedMeasurements> getDetailedMeasurements();
+    void requestDetailedMeasurements(String deviceEui, String validFrom, String validTo);
 }
