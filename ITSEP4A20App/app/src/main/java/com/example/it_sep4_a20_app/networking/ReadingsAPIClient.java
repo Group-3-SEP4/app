@@ -27,7 +27,7 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     private MutableLiveData<DetailedMeasurements> mDetailedMeasurements;
     private static final String TAG = "ReadingsAPIClient";
     //Temporary deviceEui
-    //Another one "0004A30B00219CB5"
+    //"0004A30B00219CB5"
     //"0004A30B00219CAC"
     private final String mTempDeviceEui = "0004A30B00219CB5";
 
