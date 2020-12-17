@@ -127,7 +127,7 @@ public class LiveReadingsFragment extends Fragment {
                     mWindowState.setText(getString(R.string.current_window_state_closed));
                 } else
                     mWindowState.setText(getString(R.string.current_window_state_open));
-                mServoPosition.setText(getString(R.string.current_servo_position, servo));
+                mServoPosition.setText(getString(R.string.current_servo_max_position, maxServoPosition));
             }
         });
     }

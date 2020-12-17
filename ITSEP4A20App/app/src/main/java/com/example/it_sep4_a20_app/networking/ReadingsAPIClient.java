@@ -1,16 +1,13 @@
 package com.example.it_sep4_a20_app.networking;
 
-import android.content.SharedPreferences;
-import android.util.Log;
 
+import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
 import com.example.it_sep4_a20_app.data.models.NightOverview;
 import com.example.it_sep4_a20_app.util.ServiceGenerator;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -58,7 +58,7 @@
     <string name="co2_current_reading">Current CO2:</string>
     <string name="current_temperature">Current temperature:</string>
     <string name="current_humidity">Current humidity:</string>
-    <string name="current_servo_position">Position of the servo is at %1$d %%</string>
+    <string name="current_servo_max_position">Position servo max position %1$d %%</string>
     <string name="current_window_state_open">The window is open.</string>
     <string name="current_window_state_closed">The window is closed.</string>
     <string name='key_deviceID'>Device ID</string>
