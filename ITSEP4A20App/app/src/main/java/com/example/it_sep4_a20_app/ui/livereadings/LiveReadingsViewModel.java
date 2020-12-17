@@ -4,6 +4,10 @@ package com.example.it_sep4_a20_app.ui.livereadings;
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.it_sep4_a20_app.ActiveDevice;
+import com.example.it_sep4_a20_app.OnDeviceChangeListener;
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;

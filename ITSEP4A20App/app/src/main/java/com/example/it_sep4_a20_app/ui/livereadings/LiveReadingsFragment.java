@@ -47,10 +47,6 @@ public class LiveReadingsFragment extends Fragment {
     private PieChart mChartHumidity;
     private PieChart mChartServo;
 
-    public static LiveReadingsFragment newInstance() {
-        return new LiveReadingsFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
