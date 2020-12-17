@@ -110,12 +110,13 @@ public class LiveReadingsFragment extends Fragment {
                 double temperatureSetPoint = failSafeForTemperature(mViewModel.getTemperatureSetPoint());
                 int maxHumidity = mViewModel.getMaxHumidity();
                 int minHumidity = mViewModel.getMinHumidity();
+                int maxServoPosition = mViewModel.getMaxServoPosition();
 
                 // Setting graphs
                 setChartData(2, maxCo2, co2, mChartCo2);
                 setChartData(2, (float) temperatureSetPoint, temperature, mChartTemperature);
                 setChartData(2, maxHumidity, humidity, mChartHumidity);
-                setChartData(2, Constants.MAX_SERVO_POSITION, servo, mChartServo);
+                setChartData(2, maxServoPosition, servo, mChartServo);
 
                 // Setting textViews
                 mCo2Reading.setText(co2Reading);

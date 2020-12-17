@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
+import com.example.it_sep4_a20_app.util.Constants;
 
 /**
  * @author David Nguyen
@@ -36,5 +37,7 @@ public class LiveReadingsViewModel extends AndroidViewModel {
     public int getMaxHumidity() {return mSettingsRep.getMaxHumiditySetting();}
 
     public int getMinHumidity() {return mSettingsRep.getMinHumiditySetting();}
+
+    public int getMaxServoPosition() { return Constants.MAX_SERVO_POSITION;}
 
 }

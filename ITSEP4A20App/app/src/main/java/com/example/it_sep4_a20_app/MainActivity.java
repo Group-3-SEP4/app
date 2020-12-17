@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         // Lookup navigation view
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         // Inflate the header view at runtime
-        View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        //View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         // We can now look up items within the header if needed
         //ImageView ivHeaderPhoto = headerLayout.findViewById(R.id.imageView);
 

@@ -19,8 +19,6 @@ public class SettingsAPIClient implements ISettingsAPIClient
 {
     private static final String TAG = "SettingsAPIClient";
 
-    private final String mTempDeviceEui = "0004A30B00219CB5";
-
     private static SettingsAPIClient mInstance;
     //
     private SleepTrackerAPI mApi;
@@ -47,8 +45,8 @@ public class SettingsAPIClient implements ISettingsAPIClient
     }
 
     @Override
-    public void requestSettings() {
-        Call<Settings> call = mApi.getSettings(mTempDeviceEui);
+    public void requestSettings(String deviceEui) {
+        Call<Settings> call = mApi.getSettings(deviceEui);
         call.enqueue(new Callback<Settings>() {
             @Override
             public void onResponse(Call<Settings> call, Response<Settings> response) {
