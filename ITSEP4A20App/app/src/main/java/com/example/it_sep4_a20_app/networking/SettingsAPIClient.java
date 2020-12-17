@@ -27,7 +27,7 @@ public class SettingsAPIClient implements ISettingsAPIClient
     private SettingsAPIClient()
     {
         this.mApi = ServiceGenerator.getAPI();
-        mSettings = new MutableLiveData<>();
+        mSettings = new MutableLiveData<>(new Settings());
     }
 
     public static SettingsAPIClient getInstance()
