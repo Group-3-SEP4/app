@@ -20,5 +20,11 @@
             app:key="@string/key_preference_temp"
             android:summary="Setup temperature preferences"/>
 
+        <Preference
+            app:fragment="com.example.it_sep4_a20_app.ui.devicepreferences.DevicePreferencesFragment"
+            app:key="@string/key_preference_device"
+            app:title="Device Preferences"
+            app:summary="Setup device preferences"/>
+
     </PreferenceCategory>
 </PreferenceScreen>

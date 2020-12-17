@@ -3,19 +3,24 @@ package com.example.it_sep4_a20_app.repositories;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.AsyncPlayer;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
 import com.example.it_sep4_a20_app.networking.SettingsAPIClient;
 import com.example.it_sep4_a20_app.data.models.Settings;
-import com.example.it_sep4_a20_app.networking.dummy.APIDummy;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.it_sep4_a20_app.util.Constants;
 /**
- * @author Tobias Sønderbo
+ * @author Tobias Sønderbo, Claire Zubiaurre
  */
 public class SettingsRepository
 {
@@ -85,6 +90,17 @@ public class SettingsRepository
         mPreferences.edit().putInt("max_humidity",max).apply();
     }
 
+    public void storeDevicesSetting(List<Device> devices)
+    {
+        Gson gson = new Gson();
+        String rooms_json = gson.toJson(devices);
+        mPreferences.edit().putString("devices", rooms_json).apply();
+    }
+
+    public void storeSelectedDeviceId(String device_id) {
+        mPreferences.edit().putString("selected_device_id", device_id).apply();
+    }
+
     public float getTemperatureSetPoint()
     {
         return mPreferences.getFloat("setpoint_temperature", Constants.TEMPERATURESETPOINT);
@@ -109,4 +125,16 @@ public class SettingsRepository
     {
         return mPreferences.getInt("min_humidity",Constants.MINHUMIDITY);
     }
+
+    public ArrayList<Device> getDevicesSetting() {
+        Gson gson = new Gson();
+        Type roomListType = new TypeToken<ArrayList<Device>>(){}.getType();
+        ArrayList<Device> devices = gson.fromJson(mPreferences.getString("devices", "[]"), roomListType);
+        return devices;
+    }
+
+    public String getSelectedDeviceId() {
+        return mPreferences.getString("selected_device_id", "no device selected");
+    }
+
 }

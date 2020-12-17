@@ -40,6 +40,12 @@
         android:label="Humidity Preferences" />
 
     <fragment
+        android:id="@+id/nav_device_preferences"
+        android:name="com.example.it_sep4_a20_app.ui.preferences.devicepreferences.DevicePreferencesFragment"
+        android:label="Device Preferences"
+        />
+
+    <fragment
         android:id="@+id/nav_detailed_readings"
         android:name="com.example.it_sep4_a20_app.ui.detailedreadings.DetailedReadingsFragment"
         android:label="Detailed Readings" />

@@ -18,11 +18,14 @@ import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedTemperature;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,12 +115,7 @@ public class DetailedReadingsFragment extends Fragment
             timestamps.add(detailedHumidityList.get(i).getTimestamp());
         }
 
-        ValueFormatter formatter = new ValueFormatter() {
-            @Override
-            public String getAxisLabel(float value, AxisBase axis) {
-                return timestamps.get((int) value);
-            }
-        };
+        ValueFormatter formatter = getValueFormatter(timestamps);
 
         XAxis xAxis = mHumidityLineChart.getXAxis();
         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
@@ -164,6 +162,21 @@ public class DetailedReadingsFragment extends Fragment
         mHumidityLineChart.notifyDataSetChanged();
     }
 
+    @NotNull
+    private ValueFormatter getValueFormatter(ArrayList<String> timestamps)
+    {
+        return new ValueFormatter() {
+                @Override
+                public String getAxisLabel(float value, AxisBase axis) {
+                    String[] strings = timestamps.get((int) value).split("-");
+                    String[] temp = strings[2].split("T");
+                    String day = temp[0];
+                    String[] time = temp[1].split(":");
+                    return day + "/" +strings[1] + "-" + time[0] + ":" + time[1];
+                }
+            };
+    }
+
     private void updateTemperatureChartData(DetailedMeasurements detailedMeasurements)
     {
         List<DetailedTemperature> detailedTemperatures = detailedMeasurements.getDetailedTemperatureList();
@@ -179,12 +192,7 @@ public class DetailedReadingsFragment extends Fragment
             timestamps.add(detailedTemperatures.get(i).getTimestamp());
         }
 
-        ValueFormatter formatter = new ValueFormatter() {
-            @Override
-            public String getAxisLabel(float value, AxisBase axis) {
-                return timestamps.get((int) value);
-            }
-        };
+        ValueFormatter formatter = getValueFormatter(timestamps);
 
         XAxis xAxis = mTemperatureLineChart.getXAxis();
         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
@@ -238,12 +246,7 @@ public class DetailedReadingsFragment extends Fragment
             timestamps.add(detailedCo2s.get(i).getTimestamp());
         }
 
-        ValueFormatter formatter = new ValueFormatter() {
-            @Override
-            public String getAxisLabel(float value, AxisBase axis) {
-                return timestamps.get((int) value);
-            }
-        };
+        ValueFormatter formatter = getValueFormatter(timestamps);
 
         XAxis xAxis = mCo2LineChart.getXAxis();
         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1

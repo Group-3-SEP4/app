@@ -54,11 +54,15 @@
     <string name="current_min_co2">Current minimum value is: %1$d ppm</string>
     <string name="current_max_co2">Current maximum value is: %1$d ppm</string>
     <string name="summary_reset_humidity">Reset humidity to recommended</string>
+    <string name="summary_reset_temperature">Reset temperature setpoint to recommended</string>
     <string name="co2_current_reading">Current CO2:</string>
     <string name="current_temperature">Current temperature:</string>
     <string name="current_humidity">Current humidity:</string>
-    <string name="summary_reset_temperature">Reset temperature set point to recommended</string>
     <string name="current_servo_position">Position of the servo is at %1$d %%</string>
     <string name="current_window_state_open">The window is open.</string>
     <string name="current_window_state_closed">The window is closed.</string>
+    <string name='key_deviceID'>Device ID</string>
+    <string name='title_editDeviceID'>Edit Device ID</string>
+    <string name='key_preference_device'>Device_preferences</string>
+    <string name='key_preference_device_add'>Device_preferences_add</string>
 </resources>

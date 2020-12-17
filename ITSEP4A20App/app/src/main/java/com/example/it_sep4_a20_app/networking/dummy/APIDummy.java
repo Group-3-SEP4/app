@@ -19,8 +19,10 @@ import com.example.it_sep4_a20_app.networking.ISettingsAPIClient;
 import com.example.it_sep4_a20_app.networking.IReadingsAPIClient;
 
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Development class which is used in place of API to test view behaviour. Would be deleted on release.
+ */
 public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
 {
 
@@ -98,6 +100,12 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     }
 
     @Override
+    public void requestNightOverview(String deviceEui)
+    {
+
+    }
+
+    @Override
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
         MutableLiveData<DetailedMeasurements> data = new MutableLiveData<>();
@@ -146,5 +154,11 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
         }).start();
 
         return data;
+    }
+
+    @Override
+    public void requestDetailedMeasurements(String deviceEui, String validFrom, String validTo)
+    {
+
     }
 }

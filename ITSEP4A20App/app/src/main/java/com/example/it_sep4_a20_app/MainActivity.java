@@ -4,8 +4,10 @@ package com.example.it_sep4_a20_app;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -16,14 +18,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * @author Claire Zubiaurre
+ */
 public class MainActivity extends AppCompatActivity
 {
-
+    private MainActivityViewModel viewModel;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new MainActivityViewModel(getApplication());
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,12 +59,40 @@ public class MainActivity extends AppCompatActivity
         //View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         // We can now look up items within the header if needed
         //ImageView ivHeaderPhoto = headerLayout.findViewById(R.id.imageView);
+
+    }
+
+    private void refreshOptionsMenu(Menu menu) {
+        List<Device> devices = viewModel.getDevices();
+        menu.clear();
+
+        for (int i=0; i<devices.size(); i++) {
+            MenuItem item = menu.add(devices.get(i).getName());
+
+            int finalI = i;
+            item.setOnMenuItemClickListener (new MenuItem.OnMenuItemClickListener(){
+                @Override
+                public boolean onMenuItemClick (MenuItem item){
+                    viewModel.storeSelectedDeviceId(devices.get(finalI).getRoomId().toString());
+                    return true;
+                }
+            });
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.appbar_menu, menu);
+
+        refreshOptionsMenu(menu);
+
+        ActiveDevice device = ActiveDevice.getInstance();
+        device.registerOnDeviceChangeListener(new OnDeviceChangeListener() {
+            @Override
+            public void OnDeviceChange(Device device) {
+                refreshOptionsMenu(menu);
+            }
+        });
+
         return true;
     }
 
@@ -63,5 +102,7 @@ public class MainActivity extends AppCompatActivity
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 
 }

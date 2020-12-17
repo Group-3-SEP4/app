@@ -3,21 +3,20 @@ package com.example.it_sep4_a20_app.ui.detailedreadings;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresPermission;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedCo2;
-import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedHumidity;
+import com.example.it_sep4_a20_app.ActiveDevice;
+import com.example.it_sep4_a20_app.OnDeviceChangeListener;
+import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
-import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedTemperature;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
 
-import java.util.List;
+import java.time.LocalDate;
+
 /**
- * @author Tobias Sønderbo, David Nguyen
+ * @author Tobias Sønderbo, David Nguyen, Claire Zubiaure
  */
 public class DetailedReadingsViewModel extends AndroidViewModel
 {
@@ -29,11 +28,23 @@ public class DetailedReadingsViewModel extends AndroidViewModel
         super(application);
         mReadingsRepository = ReadingsRepository.getInstance();
         mSettingsRepository = SettingsRepository.getInstance(application);
+
+        ActiveDevice device = ActiveDevice.getInstance();
+        device.registerOnDeviceChangeListener(new OnDeviceChangeListener() {
+            @Override
+            public void OnDeviceChange(Device device) {
+                mReadingsRepository.setDeviceId(device.getRoomId());
+            }
+        });
     }
 
     public LiveData<DetailedMeasurements> getDetailedMeasurements()
     {
-        return mReadingsRepository.getDetailedMeasurements();
+        LocalDate current = LocalDate.now();
+        String to = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
+        current = current.minusDays(1);
+        String from = current.getYear() + "-" + current.getMonthValue() + "-" + current.getDayOfMonth();
+        return mReadingsRepository.getDetailedMeasurements(from, to);
     }
 
     public int getMaxHumidityPreference()
