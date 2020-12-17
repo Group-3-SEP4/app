@@ -56,6 +56,6 @@ public class ReadingsRepository
 
     public void setDeviceId(String device_id) {
         this.deviceId = device_id;
-        //also do whatever else needed in a real case
+        //also do whatever else needed in a case
     }
 }
