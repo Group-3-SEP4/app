@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity
 
         // Lookup navigation view
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-
     }
 
     private void refreshOptionsMenu(Menu menu) {

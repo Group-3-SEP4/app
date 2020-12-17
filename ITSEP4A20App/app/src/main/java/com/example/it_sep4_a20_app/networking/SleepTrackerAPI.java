@@ -18,7 +18,6 @@ import retrofit2.http.Query;
  */
 public interface SleepTrackerAPI
 {
-        //TODO add deviceEui as querry
     @GET("/Settings")
     Call<Settings> getSettings(@Query("deviceEui") String deviceEui);
 

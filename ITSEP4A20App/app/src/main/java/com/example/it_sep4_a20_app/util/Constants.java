@@ -1,6 +1,6 @@
 package com.example.it_sep4_a20_app.util;
 /**
- * @author Tobias Sønderbo
+ * @author Tobias Sønderbo, David Nguyen
  */
 public class Constants
 {
