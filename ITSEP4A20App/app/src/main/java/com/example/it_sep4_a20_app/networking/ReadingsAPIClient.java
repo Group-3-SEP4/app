@@ -100,7 +100,9 @@ public class ReadingsAPIClient implements IReadingsAPIClient
             @Override
             public void onFailure(Call<NightOverview> call, Throwable t)
             {
-
+                Log.i(TAG, "Something went wrong :<");
+                Log.i(TAG, t.getLocalizedMessage());
+                Log.i(TAG, t.toString());
             }
         });
     }
