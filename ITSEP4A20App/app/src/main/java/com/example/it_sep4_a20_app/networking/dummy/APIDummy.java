@@ -2,7 +2,6 @@ package com.example.it_sep4_a20_app.networking.dummy;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.ArrayAdapter;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -32,7 +31,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     {
         settingsMutableLiveData = new MutableLiveData<>();
         Settings settings = new Settings();
-        settings.setTemperatureSetPoint(32.0);
+        settings.setTemperatureSetpoint(32.0);
         settings.setPpmMax(1000);
         settingsMutableLiveData.setValue(settings);
 

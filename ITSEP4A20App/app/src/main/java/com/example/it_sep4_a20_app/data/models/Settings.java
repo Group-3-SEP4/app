@@ -5,7 +5,7 @@ import java.util.List;
 public class Settings {
     private int settingsId;
     private String lastUpdate;
-    private double temperatureSetPoint;
+    private double temperatureSetpoint;
     private int ppmMin;
     private int ppmMax;
     private List<Device> device;
@@ -17,7 +17,7 @@ public class Settings {
                     double temperatureSetPoint, int co2Min, int co2Max, List<Device> devices) {
         this.settingsId = settingsId;
         this.lastUpdate = lastUpdate;
-        this.temperatureSetPoint = temperatureSetPoint;
+        this.temperatureSetpoint = temperatureSetPoint;
         this.ppmMin = co2Min;
         this.ppmMax = co2Max;
         this.device = devices;
@@ -39,12 +39,12 @@ public class Settings {
         this.lastUpdate = lastUpdate;
     }
 
-    public double getTemperatureSetPoint() {
-        return temperatureSetPoint;
+    public double getTemperatureSetpoint() {
+        return temperatureSetpoint;
     }
 
-    public void setTemperatureSetPoint(double temperatureSetPoint) {
-        this.temperatureSetPoint = temperatureSetPoint;
+    public void setTemperatureSetpoint(double temperatureSetpoint) {
+        this.temperatureSetpoint = temperatureSetpoint;
     }
 
     public void setPpmMin(int ppmMin) {

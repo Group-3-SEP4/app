@@ -29,7 +29,7 @@ public class TemperaturePreferenceViewModel extends AndroidViewModel
     public void setTemperatureSetPoint(double maxTemp)
     {
         Settings temp = mRepo.getSettings().getValue();
-        temp.setTemperatureSetPoint(maxTemp);
+        temp.setTemperatureSetpoint(maxTemp);
         mRepo.setSettings(temp);
     }
 

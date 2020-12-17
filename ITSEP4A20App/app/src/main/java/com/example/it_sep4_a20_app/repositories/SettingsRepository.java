@@ -39,7 +39,7 @@ public class SettingsRepository
         {
             storeMaxCo2Setting(settings.getPpmMax());
             storeMinCo2Setting(settings.getPpmMin());
-            storeTemperatureSetPoint((float) settings.getTemperatureSetPoint());
+            storeTemperatureSetPoint((float) settings.getTemperatureSetpoint());
         });
     }
 
