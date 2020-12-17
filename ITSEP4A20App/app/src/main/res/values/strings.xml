@@ -5,7 +5,7 @@
     <string name="menu_liveReadings">Live readings</string>
     <string name="navigationView">Navigation</string>
     <string name="nav_header_subtitle">Here goes subtitle /TODO change</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_devices">Settings</string>
     <string name="menu_settings">Settings</string>
     <string name="key_minCo2">minCo2Level</string>
     <string name="key_maxCo2">maxCo2Level</string>

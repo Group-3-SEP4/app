@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <PreferenceCategory
         app:key="preference_category"
-        app:title="Preferences">
-        <Preference
-            app:fragment="com.example.it_sep4_a20_app.ui.co2preferences.Co2PreferencesFragment"
-            app:key="@string/key_preference_co2"
-            app:title="CO2 Preferences"
-            app:summary="Setup CO2 preferences"/>
-        <Preference
-            app:title="Humidity Preferences"
-            app:summary="Setup Humidity preferences"
-            app:key="@string/key_preference_humidity"
-            android:summary="Setup humidity preferences"/>
-        <Preference
-            app:title="Temperature Preferences"
-            app:summary="Setup Temperature preferences"
-            app:key="@string/key_preference_temp"
-            android:summary="Setup temperature preferences"/>
+        app:title="Devices">
 
         <Preference
             app:fragment="com.example.it_sep4_a20_app.ui.devicepreferences.DevicePreferencesFragment"
             app:key="@string/key_preference_device"
-            app:title="Device Preferences"
-            app:summary="Setup device preferences"/>
+            app:summary="Setup device preferences"
+            app:title="Device Preferences" />
+    </PreferenceCategory>
 
+    <PreferenceCategory
+        app:key="preference_category"
+        app:title="Preferences">
+
+        <Preference
+            app:fragment="com.example.it_sep4_a20_app.ui.co2preferences.Co2PreferencesFragment"
+            app:key="@string/key_preference_co2"
+            app:summary="Setup CO2 preferences"
+            app:title="CO2 Preferences" />
+        <Preference
+            android:summary="Setup humidity preferences"
+            app:key="@string/key_preference_humidity"
+            app:summary="Setup Humidity preferences"
+            app:title="Humidity Preferences" />
+        <Preference
+            android:summary="Setup temperature preferences"
+            app:key="@string/key_preference_temp"
+            app:summary="Setup Temperature preferences"
+            app:title="Temperature Preferences" />
     </PreferenceCategory>
 </PreferenceScreen>

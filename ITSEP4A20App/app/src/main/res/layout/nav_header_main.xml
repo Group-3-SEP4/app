@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="left"
-
     android:orientation="vertical">
 
     <ImageView
@@ -12,7 +11,7 @@
         android:id="@+id/nav_header_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorOnPrimary"
+        android:background="@color/dark_purple"
         android:text="Header"
         android:src="@drawable/ic_sleep_tracker_logo"
         android:textColor="@color/white"/>
@@ -26,7 +25,7 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         android:text="Sleep tracker"
-        android:background="?attr/colorOnPrimary"
+        android:background="@color/dark_purple"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>

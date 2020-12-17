@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.it_sep4_a20_app.R;
 import com.example.it_sep4_a20_app.data.models.LiveMeasurements;
-import com.example.it_sep4_a20_app.util.Constants;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -183,7 +182,7 @@ public class LiveReadingsFragment extends Fragment {
 
         // Changes color if the measured value is out of bounds
         if (value<range){
-            dataSet.setColors(new int[]{getContext().getColor(R.color.purple)
+            dataSet.setColors(new int[]{getContext().getColor(R.color.purple_500)
                     , getContext().getColor(R.color.white)});
         } else {
             dataSet.setColor(getContext().getColor(R.color.red_warning_900),200);
