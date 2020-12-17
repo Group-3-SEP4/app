@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.it_sep4_a20_app.data.models.Device;
+import com.example.it_sep4_a20_app.util.ActiveDevice;
+import com.example.it_sep4_a20_app.util.OnDeviceChangeListener;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;

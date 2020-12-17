@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.repositories.SettingsRepository;
+import com.example.it_sep4_a20_app.util.ActiveDevice;
 
 import java.util.List;
 

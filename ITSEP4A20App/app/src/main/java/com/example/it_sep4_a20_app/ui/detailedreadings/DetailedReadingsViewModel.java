@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.it_sep4_a20_app.ActiveDevice;
-import com.example.it_sep4_a20_app.OnDeviceChangeListener;
+import com.example.it_sep4_a20_app.util.ActiveDevice;
+import com.example.it_sep4_a20_app.util.OnDeviceChangeListener;
 import com.example.it_sep4_a20_app.data.models.Device;
 import com.example.it_sep4_a20_app.data.models.detailedinfo.DetailedMeasurements;
 import com.example.it_sep4_a20_app.repositories.ReadingsRepository;
