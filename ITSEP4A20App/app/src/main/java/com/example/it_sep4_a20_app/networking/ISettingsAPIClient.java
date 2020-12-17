@@ -10,6 +10,6 @@ import com.example.it_sep4_a20_app.data.models.Settings;
 public interface ISettingsAPIClient
 {
     LiveData<Settings> getSettings();
-    void requestSettings();
+    void requestSettings(String deviceEui);
     void postSettings(Settings newSettings);
 }

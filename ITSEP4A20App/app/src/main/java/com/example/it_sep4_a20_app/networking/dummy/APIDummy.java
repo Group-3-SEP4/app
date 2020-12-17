@@ -48,7 +48,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     }
 
     @Override
-    public void requestSettings()
+    public void requestSettings(String deviceEui)
     {
         settingsMutableLiveData.setValue(settingsMutableLiveData.getValue());
     }
@@ -65,7 +65,7 @@ public class APIDummy implements ISettingsAPIClient, IReadingsAPIClient
     }
 
     @Override
-    public void requestMeasurements() {
+    public void requestMeasurements(String deviceEui) {
 
     }
 

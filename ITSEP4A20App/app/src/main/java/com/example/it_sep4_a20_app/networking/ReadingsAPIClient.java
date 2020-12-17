@@ -26,10 +26,6 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     private MutableLiveData<LiveMeasurements> mLiveMeasurement;
     private MutableLiveData<DetailedMeasurements> mDetailedMeasurements;
     private static final String TAG = "ReadingsAPIClient";
-    //Temporary deviceEui
-    //"0004A30B00219CB5"
-    //"0004A30B00219CAC"
-    private final String mTempDeviceEui = "0004A30B00219CB5";
 
     private ReadingsAPIClient() {
         this.mApi = ServiceGenerator.getAPI();
@@ -53,8 +49,8 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     }
 
     @Override
-    public void requestMeasurements() {
-        Call<LiveMeasurements> call = mApi.getLiveMeasurement(mTempDeviceEui);
+    public void requestMeasurements(String deviceEui) {
+        Call<LiveMeasurements> call = mApi.getLiveMeasurement(deviceEui);
         call.enqueue(new Callback<LiveMeasurements>() {
             @Override
             public void onResponse(Call<LiveMeasurements> call, Response<LiveMeasurements> response) {
@@ -118,7 +114,7 @@ public class ReadingsAPIClient implements IReadingsAPIClient
     @Override
     public void requestDetailedMeasurements(String deviceEui, String validFrom, String validTo)
     {
-        Call<DetailedMeasurements> call = mApi.getDetailedMeasurements(mTempDeviceEui, validFrom, validTo);
+        Call<DetailedMeasurements> call = mApi.getDetailedMeasurements(deviceEui, validFrom, validTo);
         call.enqueue(new Callback<DetailedMeasurements>()
         {
             @Override

@@ -14,7 +14,7 @@ import java.util.List;
 public interface IReadingsAPIClient
 {
     LiveData<LiveMeasurements> getLiveMeasurements();
-    void requestMeasurements();
+    void requestMeasurements(String deviceEui);
     LiveData<NightOverview> getNightOverview();
     void requestNightOverview(String deviceEui);
     LiveData<DetailedMeasurements> getDetailedMeasurements();

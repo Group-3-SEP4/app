@@ -55,7 +55,7 @@ public class SettingsRepository
     public LiveData<Settings> getSettings()
     {
         Log.i(TAG, "Calling request settings...");
-        mApiClient.requestSettings();
+        mApiClient.requestSettings(getSelectedDeviceId());
         return mApiClient.getSettings();
     }
 

@@ -38,7 +38,7 @@ public class ReadingsRepository
 
     public LiveData<LiveMeasurements> getLiveMeasurements() {
         Log.i(TAG, "Calling request for measurements...");
-        mApiClient.requestMeasurements();
+        mApiClient.requestMeasurements(deviceId);
         return mApiClient.getLiveMeasurements();
     }
 
