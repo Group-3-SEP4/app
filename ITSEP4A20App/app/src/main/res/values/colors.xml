@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#a4a3c0</color>
+    <color name="purple_500">#554a83</color>
+    <color name="purple_700">#46396f</color>
+    <color name="purple">#4f437a</color>
+    <color name="dark_purple">#30214b</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green_500">#4CAF50</color>
+<!--    Half Pie Colors-->
+    <color name="red_warning_200">#EF9A9A</color>
+    <color name="red_warning_500">#F44336</color>
+    <color name="red_warning_900">#B71C1C</color>
+    <color name="blue_warning_900">#1A237E</color>
+    <color name="blue_warning_500">#3F51B5</color>
+    <color name="blue_warning_200">#9FA8DA</color>
+
+</resources>

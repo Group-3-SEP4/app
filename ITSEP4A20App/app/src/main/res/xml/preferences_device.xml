@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:defaultValue="1"
+        android:key="device list"
+        android:title="Currently selected device" />
+
+    <com.example.it_sep4_a20_app.ui.preferences.devicepreferences.AddDevicePreference
+        android:key="new device"
+        android:title="Add a device"
+        android:summary=""
+        android:defaultValue="90" />
+
+
+    <Preference
+        android:key="remove device"
+        android:title="Remove device"
+        android:summary="Remove selected device" />
+
+</PreferenceScreen>

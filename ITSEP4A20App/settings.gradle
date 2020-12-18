@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "IT-SEP4-A20-App"

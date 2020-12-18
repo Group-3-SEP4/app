@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/key_temperatureSetPoint"
+        android:title="@string/title_editTemperatureSetPoint" />
+    <Preference
+        android:key="@string/key_resetTemperature"
+        android:title="@string/title_resetTemperature"
+        android:summary="@string/summary_reset_temperature"/>
+</PreferenceScreen>

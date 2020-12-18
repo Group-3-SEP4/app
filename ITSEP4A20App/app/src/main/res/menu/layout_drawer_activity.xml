@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_liveReadings"
+            android:icon="@drawable/ic_baseline_tv_24"
+            android:title="Live Readings" />
+        <item
+            android:id="@+id/nav_night_overview"
+            android:icon="@drawable/ic_baseline_article_24"
+            android:title="Night Overview"/>
+        <item
+            android:id="@+id/nav_detailed_readings"
+            android:icon="@drawable/ic_baseline_fact_check_24"
+            android:title="Detailed Readings" />
+    </group>
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings"
+            android:icon="@drawable/i_item_settings_black"/>
+    </group>
+</menu>
